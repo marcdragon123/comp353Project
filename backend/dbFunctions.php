@@ -25,7 +25,7 @@
 
 		$sql ="SELECT username, password from users where username='".$user."'";
 		$result =$db->query($sql);
-		if($user=="" || $password="")
+		if($user=="" || $password=="")
 			return 'Please enter a username and a password.';
 		if($result->num_rows==0)
 			return "The username or password are incorrect.";
@@ -34,7 +34,9 @@
 		}
 		if($result->num_rows==1){
 			if(password_verify($password,$row['password']))
-			return "";
+				return "";
+			else
+				return "The username or password are incorrect.";
 		}
 	}
 
