@@ -20,6 +20,16 @@
 		else
 			echo 'Error:'. $sql. '<br>'. $db->error;	
 	}
+	/**
+	*	Function canLogin
+	*	This functions verifies if the username and password given match on the database
+	*
+	*	@param $user
+	*			The username to verify
+	*	@param $password
+	*			The password to verify
+	* 	@return a message if it failed to match the 2 parameters, an empty string if it success
+	*/
 	function canLogin($user,$password){
 		global $db;
 
@@ -38,6 +48,9 @@
 			else
 				return "The username or password are incorrect.";
 		}
+	}
+	function postRide(){
+
 	}
 
  ?>
