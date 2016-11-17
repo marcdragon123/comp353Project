@@ -54,6 +54,14 @@
 
 		
 	}
+	/**
+	*	Function getProfileInfo
+	*		This function access all personal information about he user on the database;
+	*
+	*	@param $user
+	*		the user which information is to be found
+	*	@return   an array containing the users personal informations
+	*/
 	function getProfileInfo($user){
 		global $db;
 		$sql = "SELECT * from personalinfo WHERE username ='$user'";
