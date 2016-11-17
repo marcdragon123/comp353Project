@@ -13,13 +13,7 @@
 			return '';
 		
 	}
-	function query($sql){
-		global $db;
-		if($db->query($sql)===true)
-			return true;
-		else
-			echo 'Error:'. $sql. '<br>'. $db->error;	
-	}
+	
 	/**
 	*	Function canLogin
 	*	This functions verifies if the username and password given match on the database
@@ -55,8 +49,10 @@
 		$result = query($query);
 		print_r($result);
 	}
-	function addDriver(){
+	function addDriver($email,$licenseID,$vehiculeNum){
+		global $db;
 		
 	}
+	function getProfileInfo(){}
 
  ?>
