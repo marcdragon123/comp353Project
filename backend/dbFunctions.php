@@ -51,8 +51,15 @@
 	}
 	function addDriver($email,$licenseID,$vehiculeNum){
 		global $db;
+
 		
 	}
-	function getProfileInfo(){}
+	function getProfileInfo($user){
+		global $db;
+		$sql = "SELECT * from personalinfo WHERE username ='$user'";
+		$result =$db->query($sql);
+		$infotable = $result->fetch_assoc();
+		return $infotable;
+	}
 
  ?>
