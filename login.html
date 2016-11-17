@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Super!</title>
+	<title>GetaRoom!</title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/styleMihai.css">
@@ -13,14 +13,14 @@
 <body>
 	<div class="container">
 		<div class="top">
-			<h1 id="title" class="hidden"><span id="logo">Welcome to <span>Super!</span></span></h1>
+			<h1 id="title" class="hidden"><span id="logo">Welcome to <span>Super</span></span></h1>
 		</div>
 		<div class="login-box animated fadeInUp">
 			<div class="box-header">
-				<h2>Registration</h2>
+				<h2>Log In</h2>
 			</div>
-		<form name="myForm" action="Register.php">
-		<div class="container" style="padding: 2em;">
+		<form name="myForm" action="Login.php">
+		<div class="container">
 			<label for="email">Email</label>
 			<br/>
 			<input type="text" name="dasEmail" id="email" placeholder="Enter email here" required>
@@ -29,20 +29,12 @@
 			<br/>
 			<input type="password" name="dasPassword" id="password" placeholder="Enter Password here" required>
 			<br/>
-			<label for="refName">Referal Name</label>
-			<br/>
-			<input type="text" name="referralName" id="refName" placeholder="Enter name of referrer!" required>
-			<br/>
-			<label for="refCode">Referral Code</label>
-			<br/>
-			<input type="text" name="referralCode" id="refCode"
-			placeholder="Enter the referral code">
-			<button type="submit">Register</button>
+			<button type="submit">Login</button>
 			<input type="checkbox" checked="checked">Remember me
 			<br/>
-			</div>
+		</div>
 		</form>
-		<button onclick="window.location.href='/Users/mihai/Desktop/Frontend/LoginPage/Login.html'">Already registered? Login!</button>
+		<button onclick="window.location.href='/Register.html'">New? Register!</button>
 	</div>
 </body>
 

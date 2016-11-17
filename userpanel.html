@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foundation for Sites</title>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="row">
+    <div class="large-12 columns" style="text-align: center;">
+      <h1>Welcome!</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <div class="callout">
+        <img src="images/Anonymous.jpg">
+        <div>
+          <?php
+          $user = "test case";
+          echo "<h3 style="text-decoration: underline;text-align:center"> Hello $user!</h3>";
+          ?>
+        </div>
+      </div>
+    </div>
+    <div class="small-9 columns">
+      <div class="primary callout">
+        <p><span style="font-weight: bold; text-align:center;">This is your user panel where you can view your reviews and your proposed special trips.</span></p><p> Please use this application responsibly.</p>
+      </div>
+    </div>
+
+  </div>
+  
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/what-input.js"></script>
+  <script src="js/vendor/foundation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
