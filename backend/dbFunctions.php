@@ -49,8 +49,14 @@
 				return "The username or password are incorrect.";
 		}
 	}
-	function postRide(){
+	function postRideDB($price, $startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW,$licenseId){
 		global $db;
+		$query = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, daysOfWeek, licenceID) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic',$date,'$daysOfW','$licenseId')";
+		$result = query($query);
+		print_r($result);
+	}
+	function addDriver(){
+		
 	}
 
  ?>
