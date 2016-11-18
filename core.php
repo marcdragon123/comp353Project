@@ -12,8 +12,6 @@
     <?php include 'header.php'?>
 
  <!-- animations -->
-
-
  <div class="loadingScreen">
   <div class="white-bg centered radius50">
     <div class="logo-animation centered">
@@ -189,56 +187,18 @@
                   <div class="tabs-panel is-active" id="panel1">
 
                     <ul class="listingsOfItems">
-                        <li class="list-item-1 "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
+                      <?php for($i=0; $i<3;$i++){?>
+
+            
+                      <li class="list-item-1 "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
                         <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
+
+
+                        <?php }?>
+                        
                         <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
+                  
+                        
                     </ul>
 
 
@@ -290,9 +250,11 @@
 var map;
 
 function initMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8,
+    center: {lat: -21.363, lng: 131.044},
+    zoom:5,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
     zoomControl: true,
     zoomControlOptions: {
     position: google.maps.ControlPosition.TOP_RIGHT
@@ -302,6 +264,18 @@ function initMap() {
     position: google.maps.ControlPosition.RIGHT_TOP
     },
   });
+  var request = {
+           origin: '373 Glengarry Beaconsfield H9W 1A2', 
+           destination: '1445 Maisonneuve Blvd W. H3G 1M8',
+           travelMode: google.maps.DirectionsTravelMode.DRIVING
+// This is to select the mode to a car and establish the origin and destination, need to <? php echo in this thing to //set the addresses from the database ()
+         };
+         directionsService.route(request, function(response, status) {
+           if (status == google.maps.DirectionsStatus.OK) {
+             directionsDisplay.setDirections(response);
+           }
+         });
+
 }
 
 function singleTrip(x){

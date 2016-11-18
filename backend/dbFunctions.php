@@ -18,7 +18,6 @@
 			return 'Please enter a username.';
 		else
 			return '';
-		
 	}
 	
 	/**
@@ -50,19 +49,37 @@
 				return "The username or password are incorrect.";
 		}
 	}
+
+
 	function postRideDB($price, $startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW,$licenseId){
 		global $db;
-		$sql = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, daysOfWeek, licenceID) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic',$date,'$daysOfW','$licenseId')";
-		$result = $db->query($sql);
-		print_r($result);
-	}
-	function addDriver($email,$licenseID,$vehiculeNum){
-		global $db;
-		$sql = "INSERT INTO personalinfo () VALUES()";
-		//$result = db->query($sql);
-		return "";
 
+		$sql = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, daysOfWeek, licenceID) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic',$date,'$daysOfW','$licenseId')";
 		
+		if ($db->query($sql) === TRUE) 
+    		return "";
+		else 
+    		return "Error: " . $sql . "<br>" . $db->error;
+	}
+	/**
+	*	Function addDriverDB
+	*		This function adds to the database information about a user who wants to be a driver
+	*
+	*	@param $licenseID
+	*		the user's license
+	*	@param $email
+	*		the user's email
+	*	@param $vehiculeNum
+	*		the user's vehicule number
+	*	@return an empty string if everything was good. A error message if not.
+	*/
+	function addDriverDB($licenseID,$email,$vehiculeNum){
+		global $db;
+		$sql = "INSERT INTO driver(licenceID,user_email,score,vehiculeNum,numRides) VALUES('$licenseID','$email',null,'$vehiculeNum',0)";
+		if ($db->query($sql) === TRUE) 
+    		return "";
+		else 
+    		return "Error: " . $sql . "<br>" . $db->error;
 	}
 	/**
 	*	Function getProfileInfo
@@ -79,5 +96,5 @@
 		$infotable = $result->fetch_assoc();
 		return $infotable;
 	}
-
+	
  ?>
