@@ -59,7 +59,7 @@
 	function addDriver($email,$licenseID,$vehiculeNum){
 		global $db;
 		$sql = "INSERT INTO personalinfo () VALUES()";
-		$result = db->query($sql);
+		//$result = db->query($sql);
 		return "";
 
 		
