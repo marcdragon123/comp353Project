@@ -4,6 +4,7 @@ $username = "root";
  //$password = "a;sldkfj";
 $password = "";
 $dbname = 'COMP353SUBER';
+//$dbname = 'comp353';
 
 // Create connection
 $db = new mysqli($servername, $username, $password,$dbname);
