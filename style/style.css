@@ -15,11 +15,21 @@ aqua = #008F95;*/
 
 
 .postRequestForms{
-  width: 80% !important;
+  width: 100px !important;
   -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 30px!important;
+  border-radius: 5px!important;
+  height:10px !important;
+  display:inline;
+}
+
+#form{
+  font-size: 13px;
+}
+
+#form[type="text"]{
+  font-size: 13px;
 }
 
 .papaya-bg{
@@ -41,10 +51,51 @@ aqua = #008F95;*/
   background-color: red ;
 }
 
+/******************************************** MAP *********************************************/
+
 .map{
-  width: 100%;
-  height: 90vh;
+  width: 0%
+  height: 0%;
 }
+
+.map.show{
+  display:block;
+  width: 100% !important;
+  height: 60vh !important;
+}
+
+
+/******************************************** END SHOW MAP *********************************************/
+/******************************************** Trip Info *********************************************/
+.tripInfo{
+  width:0%;
+  height:0%;
+  display:none;
+}
+.tripInfo.show{
+  width:100% !important;
+  height:30vh !important;
+  position:relative;
+  display:block;
+}
+
+.trip-info-profile-img{
+  width:0%;
+  height:0%;
+}
+
+.trip-info-profile-img.show{
+  height: 250px;
+  width: 250px;
+  border: 10px solid white;
+  border-radius: 150px;
+  float:right;
+  position:absolute;
+  top:-125px;
+  right:1px;
+}
+
+/******************************************** END Trip Info*********************************************/
 
 .removeMargin{
   margin: 0 0 0 0;
@@ -74,18 +125,43 @@ aqua = #008F95;*/
 }
 
 .requestButton{
-  height: 45vh;
-  width:100%;
-  /*margin:7px;
-  border-radius: 5px;*/
+  height: 30vh;
+  /*width:100%;*/
+
+}
+
+.searchButton{
+  height: 30vh;
+  /*width:100%;*/
+
 }
 
 .postButton{
-  height: 45vh;
-    width:100%;
-    /*margin:7px;
-    border-radius: 5px;*/
+  height:  30vh;
+    /*width:100%;*/
 }
+
+.listings{
+  height: 90vh!important;
+  overflow-y: scroll;
+}
+
+.list-item{
+  height:100px;
+  border: 1px solid #000;
+  padding: 5px;
+  margin-top: 3px;
+    border-radius: 50px;
+}
+
+.list-item-img{
+  height:90px;
+  height:90px;
+  border: 2px solid #008F95;
+  border-radius: 50px;
+}
+
+
 form{
   width:100%;
   height:100%
@@ -97,10 +173,11 @@ form{
   margin-left:38% !important;
 }
 
+
 .floatBottomSubmitBotton{
   position:absolute;
   bottom: 0;
-  transform:translateY(-35%);
+  transform:translateY(10%);
 }
 
 .orangeButton{
@@ -109,7 +186,7 @@ form{
   background-color: #E9B000;
   color: black;
   font-weight: bold;
-  height:125px;
+  height:50px;
   width:125px !important;
   margin-right: auto !important;
   margin-left: auto!important;
@@ -145,12 +222,12 @@ form{
   background-color: #E9B000;
   color: black;
   font-weight: bold;
-  height:125px;
+  height:50px;
   width:125px !important;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: auto !important;
+  margin-left: auto!important;
   content:none !important;
-  line-height: 100px!important;
+  /*line-height: 110px!important;*/
   border-style: solid;
   border-width:4px;
   border-color: black;
@@ -172,7 +249,7 @@ form{
   box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
   color:white;
   border-color: white;
-  background-color:  #008F95;
+  background-color:  #EB6E80;
 }
 
 .marginCenter{
@@ -186,7 +263,7 @@ form{
 }
 
 .fullWidth{
-  width:100%;
+  width:100%!important;
 }
 
 .centered {
@@ -212,7 +289,7 @@ form{
   content: none!important;
 }
 
-/*animation stuff*/
+/*****************************************************animation stuff*********************************************************************************/
 
 .loadingScreen{
     display: block;
@@ -236,6 +313,11 @@ form{
              -webkit-animation-timing-function: cubic-bezier(0.550, 0.085, 0.680, 0.530);
              -webkit-animation-direction: normal;
              -webkit-animation-fill-mode: forwards;
+}
+
+.loadingScreen.skip{
+  animation: loadingScreen instant-in 1ms ease-out;
+  animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes loading-animation {
@@ -390,6 +472,58 @@ border-color: transparent transparent transparent #3b88db;
   border-bottom-width: 10px; */
 }
 
+
+.fadeIn{
+	animation-name: fadeIn;
+	-webkit-animation-name: fadeIn;
+
+	animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+
+	animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+
+	visibility: visible !important;
+}
+
+@keyframes fadeIn {
+	0% {
+		transform: scale(0);
+		opacity: 0.0;
+	}
+	60% {
+		transform: scale(1.1);
+	}
+	80% {
+		transform: scale(0.9);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		-webkit-transform: scale(0);
+		opacity: 0.0;
+	}
+	60% {
+		-webkit-transform: scale(1.1);
+	}
+	80% {
+		-webkit-transform: scale(0.9);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/********************************************************************Animation End**************************************************************************/
+
 .white-bg{
   background-color: white!important;
   height:250px;
@@ -399,3 +533,18 @@ border-color: transparent transparent transparent #3b88db;
 .is-drilldown{
   max-width:none!important;
 }
+
+.listingsOfItems{
+  list-style-type: none;
+}
+
+
+/*body.skip-animation {
+  cursor: default;
+}
+
+.skip-animation.loadingScreen.logo-animation2.logo-animation {
+  background: #005;
+  -webkit-animation: none;
+  opacity: 1;
+}*/
