@@ -1,5 +1,12 @@
 <?php 
-
+	/**
+	*	Function userExist
+	*	This function verifies if the username already exists on the database
+	*
+	*	@param $user
+	*		The username to verify
+	*	@return an empty string if the username doesn't exist, a message otherwise.
+	*/
 	function userExist($user){
 		global $db;
 		$sql= "SELECT username from users where username = '". $user ."'";
@@ -45,12 +52,15 @@
 	}
 	function postRideDB($price, $startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW,$licenseId){
 		global $db;
-		$query = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, daysOfWeek, licenceID) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic',$date,'$daysOfW','$licenseId')";
-		$result = query($query);
+		$sql = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, daysOfWeek, licenceID) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic',$date,'$daysOfW','$licenseId')";
+		$result = $db->query($sql);
 		print_r($result);
 	}
 	function addDriver($email,$licenseID,$vehiculeNum){
 		global $db;
+		$sql = "INSERT INTO personalinfo () VALUES()";
+		$result = db->query($sql);
+		return "";
 
 		
 	}
