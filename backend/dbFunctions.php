@@ -33,7 +33,7 @@
 	function canLogin($user,$password){
 		global $db;
 
-		$sql ="SELECT username, password from users where username='".$user."'";
+		$sql ="SELECT email, password from users where email='".$user."'";
 		$result =$db->query($sql);
 		if($user=="" || $password=="")
 			return 'Please enter a username and a password.';
