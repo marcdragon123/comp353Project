@@ -12,7 +12,16 @@ function RegisterVerify(string $Username)
     {
         $query = "SELECT * FROM users WHERE username = '".$Username."'";
         $result = $db.query($query);
-        if ($result.contains(null))
+        $flag = true;
+        foreach($result as &$value)
+        {
+            if(empty($value))
+            {
+                $flag = false;
+            }
+        }
+        
+        if ($flag)
         {
             echo '<p>User is not registered in the database</p>';
             return false;
