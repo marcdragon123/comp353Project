@@ -19,6 +19,7 @@
 		<ul class="menu mustard-bg">
 			<!-- <li><input type="search" placeholder="Search"></li>
 			<li><button type="button" class="button">Search</button></li> -->
+			<li class="radius50 mustard-bg"><a class ="mustard-bg" id="profileButton">My Profile</a></li>
 			<li class="radius50 mustard-bg"><a class ="mustard-bg" href='register.php'>Register</a></li>
 			<li class="radius50 mustard-bg"><a href ='Login.php'>Log In</a></li>
 		</ul>

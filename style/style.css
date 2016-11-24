@@ -24,6 +24,7 @@ aqua = #008F95;*/
   display:inline;
 }
 
+
 #form{
   font-size: 13px;
 }
@@ -66,6 +67,30 @@ aqua = #008F95;*/
 
 
 /******************************************** END SHOW MAP *********************************************/
+
+.map.postClicked{
+  display:block !important;
+  width: 100% !important;
+  height: 70vh !important;
+}
+
+.tripInfo.postClicked{
+  height:0% !important;
+  width:0% !important;
+  display:none !important;
+}
+
+.postInfo{
+  height:0%;
+  width:0%;
+  display:none !important;
+}
+
+.postInfo.postClicked{
+  height:30vh !important;
+  width:100% !important;
+  display:block !important;
+}
 /******************************************** Trip Info *********************************************/
 .tripInfo{
   width:0%;
@@ -77,6 +102,7 @@ aqua = #008F95;*/
   height:30vh !important;
   position:relative;
   display:block;
+  resize:vertical;
 }
 
 .trip-info-profile-img{
@@ -191,7 +217,7 @@ form{
   margin-right: auto !important;
   margin-left: auto!important;
   content:none !important;
-  line-height: 100px!important;
+  /*line-height: 100px!important;*/
   border-style: solid;
   border-width:4px;
   border-color: black;
@@ -548,3 +574,247 @@ border-color: transparent transparent transparent #3b88db;
   -webkit-animation: none;
   opacity: 1;
 }*/
+
+/********************************************************************Profile Stuff**************************************************************************/
+
+.profileCol{
+  height: 0%;
+  width: 0%;
+  display:none;
+}
+
+.searchCol{
+  height:100%;
+  width:100%;
+  display:block;
+}
+
+.mapCol{
+  height:100%;
+  width:100%;
+  display:block;
+}
+
+.profCol{
+  height: 0%;
+  width: 0%;
+  display:none;
+}
+
+/******profile clicked*************/
+
+.profileCol.profileClicked {
+  height: 100%;
+  width: 100%;
+  display:block;
+}
+
+.searchCol.profileClicked{
+  height:0%;
+  width:0%;
+  display:none;
+}
+
+.mapCol.profileClicked{
+  height:0%;
+  width:0%;
+  display:none;
+}
+
+/*.mapCol.postClicked{
+  height:100%;
+  width:100%;
+  display:block;
+}*/
+
+
+.profCol.profileClicked{
+  height: 100%;
+  width: 100%;
+  display:block;;
+}
+
+.profile-img{
+  height: 250px;
+  width: 250px;
+  border: 10px solid white;
+  border-radius: 150px;
+}
+
+.profButton{
+  border: 2px;
+  border-radius: 100px;
+  background-color: #E9B000;
+  color: black;
+  font-weight: bold;
+  height:25px;
+  width:50px !important;
+
+  color:black;
+  transition: color 1s;
+  transition: background-color 1s;
+  transition: border-color 1s;
+  box-shadow: 0 1px 1px 0 #C7C7C7 inset;
+  background: none repeat scroll 0 0 #ffff1a;
+}
+
+.profButton:hover{
+
+  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  color:white;
+  border-color: white;
+  background-color:  #EB6E80;
+}
+
+.col1.searchShift{
+  width:0%;
+  height:0%;
+}
+
+.col2.searchShift{
+  float:left;
+  width: 100vw;
+  height: 90vh;
+}
+
+.mapCol.searchShift{
+  width:100%;
+  height:100vh;
+  float:left;
+  display:flex;
+  flex-direction: row-reverse;
+}
+
+.map.searchShift{
+  width:100%;
+  height:70%;
+}
+
+.tripInfo.searchShift{
+  height:30%;
+  width:100%;
+  display:block;
+}
+
+.listingRow.searchShift{
+    overflow: scroll;
+}
+
+.backThing{
+  width:0%;
+  height:0%;
+  display:none;
+}
+
+
+.backThing.searchShift{
+  width:125px;
+  height:100%;
+  display:block;
+}
+
+/********************************************************************Profile Stuff End**************************************************************************/
+
+.listingRow{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.listingRow.hide{
+  width:0%;
+  height:0%;
+  display:none;
+
+}
+
+.introCol{
+  width:100%;
+  height:100%;
+  display:block;
+  background
+}
+
+.introCol.hide{
+  width:0%;
+  height:0%;
+  display:none;
+
+}
+
+#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
+}
+
+.introText{
+  color:#E9B000 !important;
+}
+
+.textOverVid{
+  padding-top: 20vh;
+  line-height: 40px;
+
+}
+
+.introTitle {
+  font-family: 'Bungee Inline', cursive;
+  color:#E9B000 !important;
+  font-size:100px;
+}
+
+
+/*papaya = #E24E42;
+mustard = #E9B000;
+blush = #EB6E80;
+aqua = #008F95;*/
+.introDesc1{
+  font-family: 'Bungee Inline', cursive;
+  color:white ;
+  font-size:40px;
+  display:inline;
+}
+
+.introDesc2{
+  font-family: 'Bungee Inline', cursive;
+  color:white ;
+  font-size:40px;
+  display:inline;
+}
+
+.introDesc3{
+  font-family: 'Bungee Inline', cursive;
+  color:white ;
+  font-size:40px;
+  display:inline;
+}
+
+/*.introDesc1,  .introDesc2, .introDesc3{
+  font-family: 'Bungee Inline', cursive;
+  color: #E9B000 ;
+  font-size:40px;
+  display:inline;
+}*/
+
+*{
+  font-family: 'Bungee Inline', cursive;
+}
+
+/*$(".searchCol").addClass("profileClicked");
+$(".col1").addClass("searchShift");
+$(".col2").addClass("searchShift");
+$(".mapCol").addClass("searchShift");
+$(".map").addClass("searchShift");
+$(".tripInfo").addClass("searchShift");*/
