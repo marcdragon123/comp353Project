@@ -1,7 +1,7 @@
 <?php session_start();
 	include 'backend/dbconnection.php' ;
 	include 'backend/dbFunctions.php';
-  if(!isset($_SESSION['user'])) { ?>
+  if(isset($_SESSION['user'])) { ?>
 
 <div class="top-bar top-barHeightWidth mustard-bg">
 	<div class="top-bar-left mustard-bg">
@@ -45,8 +45,8 @@
 			<ul class="menu mustard-bg">
 				<!-- <li><input type="search" placeholder="Search"></li>
 				<li><button type="button" class="button">Search</button></li> -->
-				<li class="radius50 mustard-bg"><a class ="mustard-bg" href='register.php'>Profile</a></li>
-				<li class="radius50 mustard-bg"> <a href="logout.php" >Log out</a> </li>
+				<li class="radius50 mustard-bg"><a class ="mustard-bg" id="profileButton">My Profile</a></li>
+				<li class="radius50 mustard-bg"> <a href="backend/logout.php" >Log out</a> </li>
 			</ul>
 		</div>
 	</div>

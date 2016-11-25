@@ -341,6 +341,7 @@ function fillInAddress() {
 
 function addMarker(){
   var place = autocomplete.getPlace();
+  //alert(JSON.stringify(place.address_components));
   var markerDep = new google.maps.Marker({
     position: place.geometry.location,
     label: 'Departure Point',
@@ -351,6 +352,7 @@ function addMarker(){
 
 
 var place2 = autocomplete2.getPlace();
+//alert(JSON.stringify(place2.address_components));
 
 var markerDest = new google.maps.Marker({
   position: place2.geometry.location,
