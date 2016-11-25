@@ -190,6 +190,24 @@
                         esse cillum dolore eu fugiat nulla pariatur. Excepteur
                         sint occaecat cupidatat non proident, sunt in culpa qui
                         officia deserunt mollit anim id est laborum.</p>
+                        <?php 
+
+                          require_once('vendor/autoload.php');
+
+                            $stripe = array(
+                              "secret_key"      => "sk_test_4Y8J6BtKfO0EUM4yYE1SQbT5",
+                              "publishable_key" => "pk_test_mztO0iJqX5ImleTFoDgfVAj1"
+                            );
+
+                            \Stripe\Stripe::setApiKey($stripe['secret_key']);
+                         ?>
+                         <form action="charge.php" method="post">
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<?php echo $stripe['publishable_key']; ?>"
+          data-description="Access for a year"
+          data-amount="50000"
+          data-locale="auto"></script>
+</form>
                 <img class="trip-info-profile-img" src="./style/pedo.jpg" href="#">
                 <a class="backToListings " >back to Listings</a>
               </div>
