@@ -1,7 +1,7 @@
 <?php session_start();
 	include 'backend/dbconnection.php' ;
 	include 'backend/dbFunctions.php';
-  if(isset($_SESSION['user'])) { ?>
+  if(!isset($_SESSION['user'])) { ?>
 
 <div class="top-bar top-barHeightWidth mustard-bg">
 	<div class="top-bar-left mustard-bg">

@@ -91,7 +91,7 @@
 	*/
 	function getProfileInfo($user){
 		global $db;
-		$sql = "SELECT * from personalinfo WHERE username ='$user'";
+		$sql = "SELECT * from personalinfo WHERE user_email ='$user'";
 		$result =$db->query($sql);
 		$infotable = $result->fetch_assoc();
 		return $infotable;

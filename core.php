@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <?php include 'header.php'?>
+    <?php include 'header.php';?>
 
  <!-- animations -->
 
@@ -165,7 +165,8 @@
       <div class="profCol papaya-bg">
         <div class="myProfilePage">
         <form id="profileForm">
-
+        <?php print_r($_SESSION['user']); 
+              print_r(getProfileInfo($_SESSION['user']));?>
         </form>
         </div>
       </div>
