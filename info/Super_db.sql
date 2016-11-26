@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS `driver`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `driver` (
   `licenceID` varchar(30) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `score` float NOT NULL,
+  `user_email` varchar(30) NOT NULL,
+  `score` float DEFAULT NULL,
   `vehiculeNum` varchar(45) NOT NULL,
   `numRides` int(11) NOT NULL,
   PRIMARY KEY (`licenceID`),
-  KEY `username_idx` (`username`),
-  CONSTRAINT `username` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `username_idx` (`user_email`),
+  CONSTRAINT `username` FOREIGN KEY (`user_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,33 @@ CREATE TABLE `driver` (
 
 LOCK TABLES `driver` WRITE;
 /*!40000 ALTER TABLE `driver` DISABLE KEYS */;
+INSERT INTO `driver` VALUES ('1','tom',NULL,'1111',0),('1234','a_nunezz',NULL,'12345',0);
 /*!40000 ALTER TABLE `driver` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invitations`
+--
+
+DROP TABLE IF EXISTS `invitations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invitations` (
+  `email` varchar(30) NOT NULL,
+  `to_email` varchar(30) NOT NULL,
+  `code` varchar(45) NOT NULL,
+  PRIMARY KEY (`email`,`to_email`),
+  CONSTRAINT `from` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invitations`
+--
+
+LOCK TABLES `invitations` WRITE;
+/*!40000 ALTER TABLE `invitations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `invitations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -51,10 +77,10 @@ DROP TABLE IF EXISTS `passager`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `passager` (
-  `username` varchar(30) NOT NULL,
+  `passager_email` varchar(30) NOT NULL,
   `need` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `usernameee` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`passager_email`),
+  CONSTRAINT `usernameee` FOREIGN KEY (`passager_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -75,14 +101,14 @@ DROP TABLE IF EXISTS `personalinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `personalinfo` (
-  `username` varchar(30) NOT NULL,
+  `user_email` varchar(30) NOT NULL,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) DEFAULT NULL,
   `address` varchar(45) NOT NULL,
   `city` varchar(45) NOT NULL,
   `dob` date NOT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `usernamee` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`user_email`),
+  CONSTRAINT `usernamee` FOREIGN KEY (`user_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -92,7 +118,7 @@ CREATE TABLE `personalinfo` (
 
 LOCK TABLES `personalinfo` WRITE;
 /*!40000 ALTER TABLE `personalinfo` DISABLE KEYS */;
-INSERT INTO `personalinfo` VALUES ('a_nunezz','Andres','Nunez','1828 Joseph-Prévost','Laval','1992-12-09'),('smalldicktom','Tomas','Nunnez','123 funny road','funnyville','1993-03-03');
+INSERT INTO `personalinfo` VALUES ('a_nunezz','Andres','Nunez','1828 Joseph-Prévost','Laval','1992-12-09'),('tom','Tomas','Nunnez','123 funny road','funnyville','1993-03-03');
 /*!40000 ALTER TABLE `personalinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,19 +130,19 @@ DROP TABLE IF EXISTS `ride`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ride` (
-  `rideID` int(11) NOT NULL,
+  `rideID` int(11) NOT NULL AUTO_INCREMENT,
   `price` float NOT NULL,
   `startTime` time(1) NOT NULL,
   `startLocation` varchar(7) NOT NULL,
   `endLocation` varchar(7) NOT NULL,
-  `isPeriodic` tinyint(1) NOT NULL,
+  `isPeriodic` varchar(5) NOT NULL,
   `date` date DEFAULT NULL,
   `daysOfWeek` varchar(15) DEFAULT NULL,
   `licenceID` varchar(30) NOT NULL,
   PRIMARY KEY (`rideID`),
   KEY `driverLicence_idx` (`licenceID`),
   CONSTRAINT `licenceID` FOREIGN KEY (`licenceID`) REFERENCES `driver` (`licenceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,33 +151,34 @@ CREATE TABLE `ride` (
 
 LOCK TABLES `ride` WRITE;
 /*!40000 ALTER TABLE `ride` DISABLE KEYS */;
+INSERT INTO `ride` VALUES (1,22.5,'12:12:12.0','H7M2X5','H7M2X5','false',NULL,NULL,'1234'),(2,10,'12:12:13.0','H7M2X5','H7M2X5','false',NULL,'W','1234'),(3,10,'12:12:13.0','H7M2X5','H7M2X5','false',NULL,'W','1234');
 /*!40000 ALTER TABLE `ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `takesride`
+-- Table structure for table `takes_ride`
 --
 
-DROP TABLE IF EXISTS `takesride`;
+DROP TABLE IF EXISTS `takes_ride`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `takesride` (
-  `rideID` int(11) NOT NULL,
-  `username` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`rideID`),
-  KEY `user_idx` (`username`),
-  CONSTRAINT `ride` FOREIGN KEY (`rideID`) REFERENCES `ride` (`rideID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `user` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `takes_ride` (
+  `passager_email` varchar(30) NOT NULL,
+  `ride_id` int(11) NOT NULL,
+  PRIMARY KEY (`passager_email`),
+  KEY `ride_id_idx` (`ride_id`),
+  CONSTRAINT `passager` FOREIGN KEY (`passager_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `ride_id` FOREIGN KEY (`ride_id`) REFERENCES `ride` (`rideID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `takesride`
+-- Dumping data for table `takes_ride`
 --
 
-LOCK TABLES `takesride` WRITE;
-/*!40000 ALTER TABLE `takesride` DISABLE KEYS */;
-/*!40000 ALTER TABLE `takesride` ENABLE KEYS */;
+LOCK TABLES `takes_ride` WRITE;
+/*!40000 ALTER TABLE `takes_ride` DISABLE KEYS */;
+/*!40000 ALTER TABLE `takes_ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -162,9 +189,12 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `username` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `password` varchar(60) NOT NULL,
-  PRIMARY KEY (`username`)
+  `isAdmin` varchar(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `balance` float NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -174,7 +204,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('a_nunezz','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.'),('smalldicktom','$2y$10$juFBCfWpcYaFXB.L7/0yQ.OHQQkvcPvGVXEklTjIj5JnUQst2bJKm');
+INSERT INTO `users` VALUES ('a_nunezz','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','true','active',0),('tom','$2y$10$juFBCfWpcYaFXB.L7/0yQ.OHQQkvcPvGVXEklTjIj5JnUQst2bJKm','false','active',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -187,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-07 15:46:15
+-- Dump completed on 2016-11-26 15:37:53
