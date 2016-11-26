@@ -96,5 +96,12 @@
 		$infotable = $result->fetch_assoc();
 		return $infotable;
 	}
+	function getAllRides(){
+		global $db;
+		$sql = "SELECT * FROM driver,ride where driver.licenceID = ride.licenceID";
+		$result = $db->query($sql);   //run query
+		
+		return $result;
+	}
 	
  ?>

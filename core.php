@@ -151,8 +151,8 @@
         <div class="textOverVid center">
         <h2> <p class="introTitle">SUBER </p></h2>
         <h4 class="introDesc1">Get to Where You Need To,   </h4>
-        <h4 class="introDesc2">    Share a Ride,       </h4>
-        <h4 class="introDesc3">          Community Driven   </h4>
+        <h4 class="introDesc2">    Share a Ride,    </h4>
+        <h4 class="introDesc3">          Community Driven  </h4>
         <p class="introText" style="font-size:50px;">
         Welcome to the World Greatest Ride Sharing Hub
         </p>
@@ -166,7 +166,7 @@
         <div class="myProfilePage">
         <form id="profileForm">
         <?php print_r($_SESSION['user']); 
-              print_r(getProfileInfo($_SESSION['user']));?>
+              print_r((getProfileInfo($_SESSION['user'])));?>
         </form>
         </div>
       </div>
@@ -229,13 +229,20 @@
                     <ul class="listingsOfItems">
                         <li class="list-item-1 "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
                         <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                        <li class="list-item"><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
+                      <?php  
+                          $listOfRides = getallrides();
+                          while($row = $listOfRides->fetch_assoc()) {?>
+                                  <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">
+                      
+                                 Departure: &nbsp &nbsp<?php echo $row['startLocation']; ?>
+                                 Destination: &nbsp &nbsp<?php echo $row['endLocation']; ?>
+                                 Date: &nbsp &nbsp<?php echo $row['date']; ?>
+                                 Dep. Time: &nbsp &nbsp<?php echo $row['startTime']; ?>
+                                 Price:  $ &nbsp &nbsp<?php echo $row['price']; ?>
+                                 Periodic: &nbsp &nbsp<?php echo $row['isPeriodic']; ?>
+
+                                  </li>
+                          <?php }  ?>
                     </ul>
 
                   </div>

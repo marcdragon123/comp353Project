@@ -34,6 +34,7 @@
                         <div class="expanded button-group">
                         <button type="submit" class="success button removePaddingMargin">Log In </button>
                         <a href="#register" class ='secondary button removePaddingMargin'>Register</a>
+
                         </div>
                     </div>
                 </div>
