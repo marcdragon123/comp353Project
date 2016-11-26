@@ -19,7 +19,8 @@
 		<ul class="menu mustard-bg">
 			<!-- <li><input type="search" placeholder="Search"></li>
 			<li><button type="button" class="button">Search</button></li> -->
-			<li class="radius50 mustard-bg"><a class ="mustard-bg" id="profileButton">My Profile</a></li>
+			<li class="radius50 mustard-bg"><a class ="mustard-bg inboxButton" >Inbox</a></li>
+			<li class="radius50 mustard-bg"><a class ="mustard-bg profileButton" >My Profile</a></li>
 			<li class="radius50 mustard-bg"><a class ="mustard-bg" href='register.php'>Register</a></li>
 			<li class="radius50 mustard-bg"><a href ='Login.php'>Log In</a></li>
 		</ul>
@@ -45,8 +46,8 @@
 			<ul class="menu mustard-bg">
 				<!-- <li><input type="search" placeholder="Search"></li>
 				<li><button type="button" class="button">Search</button></li> -->
-				<li class="radius50 mustard-bg"><a class ="mustard-bg" id="profileButton">My Profile</a></li>
-				<li class="radius50 mustard-bg"> <a href="backend/logout.php" >Log out</a> </li>
+				<li class="radius50 mustard-bg"><a class ="mustard-bg" href='register.php'>Profile</a></li>
+				<li class="radius50 mustard-bg"> <a href="logout.php" >Log out</a> </li>
 			</ul>
 		</div>
 	</div>

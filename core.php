@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <?php include 'header.php';?>
+    <?php include 'header.php'?>
 
  <!-- animations -->
 
@@ -34,9 +34,9 @@
       <p> PEDO MAN </p>
       <img class="profile-img" src="./style/pedo.jpg" href="#">
       <br>
-      <a class="profButton " >My Info</a>
+      <a class="profileButton" >My Info</a>
       <br>
-      <a class="profButton " >Inbox</a>
+      <a class="inboxButton" >Inbox</a>
       <br>
       <a class="profButton " >Balance</a>
       <br>
@@ -76,7 +76,7 @@
                 Riders <br>
                 <input class="postRequestForms marginCenter" type="number" name="quantity" min="1" max="10">
               </li>
-              <li class=" floatBottomSubmitBotton fullWidth"><button class="orangeButton2 marginCenter" type="button" name="button" id="submitButton">Submit</button></li>
+              <li class=" floatBottomSubmitBotton fullWidth"><button class="orangeButton2 marginCenter" type="button" name="button" id="searchSubmit">Submit</button></li>
               </form>
             </ul>
           </li>
@@ -151,24 +151,146 @@
         <div class="textOverVid center">
         <h2> <p class="introTitle">SUBER </p></h2>
         <h4 class="introDesc1">Get to Where You Need To,   </h4>
-        <h4 class="introDesc2">    Share a Ride,    </h4>
-        <h4 class="introDesc3">          Community Driven  </h4>
+        <h4 class="introDesc2">    Share a Ride,       </h4>
+        <h4 class="introDesc3">          Community Driven   </h4>
         <p class="introText" style="font-size:50px;">
         Welcome to the World Greatest Ride Sharing Hub
         </p>
         </div>
-         
+         <video playsinline autoplay muted loop poster="" id="bgvid">
+           <source src="./style/bgvid.mov">
+          </video>
 
 
       </div>
 
       <div class="profCol papaya-bg">
-        <div class="myProfilePage">
+
+      <!--myInfo-->
+
+        <div class="myProfilePage show">
         <form id="profileForm">
-        <?php print_r($_SESSION['user']); 
-              print_r((getProfileInfo($_SESSION['user'])));?>
-        </form>
+        <div style="margin-left:5em; margin-right:5em; padding-top:5em;">
+            <div class="row">
+              <div class="large-6 columns">
+                User Name: <br>
+                <input id="profName" type="text" size="50" placeholder="">
+              </div>
+              <div class="large-3 columns">
+               <br> Your Rating:
+              <fieldset >
+                  <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                  <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                  <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                  <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                  <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-8 columns">
+              About me: <br>
+              <textarea rows="6" cols="50" id="profAbout" type="text" size="500" placeholder="myDesc"></textarea><br>
+            </div>
+
+            <div class="large-4 columns">
+            <br>
+
+            <!--Warning-->
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+              Upload New Profile Image:
+              <input type="file" name="fileToUpload" id="fileToUpload">
+              <input type="submit" value="Upload Image" name="submit">
+              </form>
+
+
+            </div>
+            </div>
+            <div class="row">
+            <div class="large-6 columns">
+            My Address: <br>
+              <input id="profAddress" type="text" size="50" placeholder="address">
+              <input type="checkbox" id="star5" name="rating" value="5" />
+            </div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    Date of Birth:  <br>
+                    <input type="date" name="bday" min="1950-09-09">
+                    <input type="checkbox" id="star5" name="rating" value="5" />
+                </div>
+                <div class="large-4 columns">
+                    My Email: <br>
+                    <input id="profEmail" type="text" size="50" placeholder="email">
+                    <input type="checkbox" id="star5" name="rating" value="5" />
+                </div>
+                <div class="large-4 columns end">
+                    Driver License Number: <br>
+                    <input id="profDLN" type="text" size="50" placeholder="">
+                    <input type="checkbox" id="star5" name="rating" value="5" />
+                </div>
+                <p>Check side button if you want to hide info</p>
+            </div>
+
+            <input type="submit" value="submit">
+            </div>
+
+      </form>
+    </div>
+
+    <div class="myInbox">
+    <ul class="listingsOfItems">
+        <li class="list-item "><img class="list-item-img" src="./style/small_car.png" href="#">Ride Request</li>
+        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Ride Request</li>
+        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Request Accepted</li>
+        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Message from  Pedo Man</li>
+        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Message from Andres</li>
+        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
+        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
+       
+    </ul>
+
+    <!-- Trigger/Open The Modal -->
+<button id="myBtn">+ WRITE</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">x</span>
+    <div>
+    <form id="messageForm">
+    <div style="margin-left:5em; margin-right:5em; padding-top:5em;">
+      <div class="row">
+        <div class="large-12 columns">
+          To this Address: <br>
+            <input id="profAddress" type="text" size="50" placeholder="address">
         </div>
+        <div class="large-12 columns">
+          title <br>
+            <input id="profAddress" type="text" size="50" placeholder="message title">
+        </div>
+        <div class="large-12 columns">
+          Message Content: <br>
+            <textarea rows="6" cols="50" id="profAbout" type="text" size="500" placeholder="myDesc"></textarea><br>
+        </div>
+        <input type="submit" value="submit">
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+
+    <!--end of messaging-->
+
+
+</div>
+    </div>
+
+
+
+    <!--end of profCol-->
       </div>
 
 
@@ -219,7 +341,7 @@
               <div class="listingRow hide">
 
               <ul class="tabs" data-tabs id="example-tabs">
-                  <li class="tabs-title backThing"><a class="backThing" id="submitBackButton" >Back/Research</a></li>
+                  <li class="tabs-title backThing"><a class="backThing" id="searchSubmitBack" >Back/Research</a></li>
                   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Browse Posted Rides</a></li>
                   <li class="tabs-title"><a href="#panel2">Browse Requests</a></li>
               </ul>
@@ -227,13 +349,10 @@
                   <div class="tabs-panel is-active" id="panel1">
 
                     <ul class="listingsOfItems">
-                        <li class="list-item-1 "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-                        <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
-                      <?php  
+                        <?php  
                           $listOfRides = getallrides();
                           while($row = $listOfRides->fetch_assoc()) {?>
-                                  <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">
-                      
+                        <li class="list-item"><img class="list-item-img" src="./style/small_car.png" href="#">
                                  Departure: &nbsp &nbsp<?php echo $row['startLocation']; ?>
                                  Destination: &nbsp &nbsp<?php echo $row['endLocation']; ?>
                                  Date: &nbsp &nbsp<?php echo $row['date']; ?>
@@ -311,23 +430,6 @@ function initMap() {
 
 }
 
-
-// var autocomplete, autocomplete2;
-//
-// function initAutocomplete(){
-// var input = document.getElementById('searchDep');
-//
-// var input2 = document.getElementById('searchDest');
-//
-// var options = {
-//
-// };
-//
-//
-// autocomplete = new google.maps.places.Autocomplete(input, options);
-// autocomplete2 = new google.maps.places.Autocomplete(input2, options);
-// }
-
 var placeSearch, autocomplete, autocomplete2;
 
 var componentForm = {
@@ -338,12 +440,6 @@ var componentForm = {
   country: 'long_name',
   postal_code: 'short_name'
 };
-
-// function initAutocomplete() {
-//   // Create the autocomplete object, restricting the search to geographical
-//   // location types.
-// }
-
 
 function fillInAddress() {
   // Get the place details from the autocomplete object.
@@ -367,7 +463,6 @@ function fillInAddress() {
 
 function addMarker(){
   var place = autocomplete.getPlace();
-  //alert(JSON.stringify(place.address_components));
   var markerDep = new google.maps.Marker({
     position: place.geometry.location,
     label: 'Departure Point',
@@ -378,7 +473,6 @@ function addMarker(){
 
 
 var place2 = autocomplete2.getPlace();
-//alert(JSON.stringify(place2.address_components));
 
 var markerDest = new google.maps.Marker({
   position: place2.geometry.location,
@@ -492,27 +586,73 @@ function multipleTrip(x){
 //   $(".loadingScreen).addClass("skip");
 //   });
 
-   $(".list-item-1").click(function(){
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+//
+   $(".list-item").click(function(){
+
      $(".map").addClass("show");
+     $(".wrapMapInfo").addClass("show");
      $(".tripInfo").addClass("show");
      $(".trip-info-profile-img").addClass("show");
      $(".listingRow").addClass("hide");
+     $(".mapCol").addClass("cover");
      google.maps.event.trigger(map, 'resize');
  });
 
  $(".backToListings").click(function(){
    $(".map").removeClass("show");
+   $(".wrapMapInfo").removeClass("show");
    $(".tripInfo").removeClass("show");
    $(".trip-info-profile-img").removeClass("show");
    $(".listingRow").removeClass("hide");
+   $(".mapCol").removeClass("cover");
    google.maps.event.trigger(map, 'resize');
  });
 
- $("#profileButton").click(function(){
+ $(".profileButton").click(function(){
    $(".profileCol").addClass("profileClicked");
    $(".searchCol").addClass("profileClicked");
    $(".mapCol").addClass("profileClicked");
+   $(".mapCol").removeClass("searchShift");
    $(".profCol").addClass("profileClicked");
+   $(".listingRow").addClass("hide");
+   $(".introCol").addClass("hide");
+   $(".myProfilePage").addClass("show");
+
+
+   $(".col1").removeClass("searchShift");
+   $(".col2").removeClass("searchShift");
+   $(".mapCol").removeClass("searchShift");
+   $(".map").removeClass("searchShift");
+   $(".tripInfo").removeClass("searchShift");
+   $(".listingRow").removeClass("searchShift");
+   $(".myInbox").removeClass("show");
+
 });
 
 $("#profileBackButton").click(function(){
@@ -520,7 +660,38 @@ $("#profileBackButton").click(function(){
   $(".searchCol").removeClass("profileClicked");
   $(".mapCol").removeClass("profileClicked");
   $(".profCol").removeClass("profileClicked");
+  $(".listingRow").removeClass("hide");
+
   google.maps.event.trigger(map, 'resize');
+});
+
+$(".inboxButton").click(function(){
+  $(".profileCol").addClass("profileClicked");
+  $(".searchCol").addClass("profileClicked");
+  $(".mapCol").addClass("profileClicked");
+  $(".mapCol").removeClass("searchShift");
+  $(".profCol").addClass("profileClicked");
+  $(".listingRow").addClass("hide");
+  $(".introCol").addClass("hide");
+  $(".myInbox").addClass("show");
+
+  $(".col1").removeClass("searchShift");
+  $(".col2").removeClass("searchShift");
+  $(".mapCol").removeClass("searchShift");
+  $(".map").removeClass("searchShift");
+  $(".tripInfo").removeClass("searchShift");
+  $(".listingRow").removeClass("searchShift");
+  $(".myProfilePage").removeClass("show");
+});
+
+$(".inboxBackButton").click(function(){
+ $(".profileCol").removeClass("profileClicked");
+ $(".searchCol").removeClass("profileClicked");
+ $(".mapCol").removeClass("profileClicked");
+ $(".profCol").removeClass("profileClicked");
+ $(".listingRow").removeClass("hide");
+
+ google.maps.event.trigger(map, 'resize');
 });
 
 $("#postButton").click(function(){
@@ -530,6 +701,7 @@ $("#postButton").click(function(){
   $(".postInfo").addClass("postClicked");
   $(".listingRow").addClass("hide");
   $(".introCol").addClass("hide");
+  $(".wrapMapInfo").addClass("show");
 
   google.maps.event.trigger(map, 'resize');
 });
@@ -540,20 +712,25 @@ $("#postBackButton").click(function(){
   $(".tripInfo").removeClass("postClicked");
   $(".postInfo").removeClass("postClicked");
   $(".listingRow").removeClass("hide");
+    $(".wrapMapInfo").showClass("show");
   google.maps.event.trigger(map, 'resize');
 });
 
 $("#searchButton").click(function(){
   $(".mapCol").removeClass("postClicked");
   $(".map").removeClass("postClicked");
-  $(".tripInfo").removeClass("postClicked");
-  $(".postInfo").removeClass("postClicked");
-  $(".listingRow").removeClass("hide");
+  $(".map").removeClass("postClicked");
   $(".introCol").addClass("hide");
+
+  $(".tripInfo").removeClass("postClicked");
+  $(".tripInfo").removeClass("show");
+  $(".postInfo").removeClass("postClicked");
+  $(".wrapMapInfo").removeClass("show");
+  $(".listingRow").removeClass("hide");
   google.maps.event.trigger(map, 'resize');
 });
 
-$("#submitButton").click(function(){
+$("#searchSubmit").click(function(){
   $(".mapCol").removeClass("postClicked");
   $(".map").removeClass("postClicked");
   $(".tripInfo").removeClass("postClicked");
@@ -567,11 +744,11 @@ $("#submitButton").click(function(){
   $(".tripInfo").addClass("searchShift");
   $(".backThing").addClass("searchShift");
   $(".listingRow").addClass("searchShift");
-
+  $(".wrapMapInfo").addClass("show");
   google.maps.event.trigger(map, 'resize');
 });
 
-$("#submitBackButton").click(function(){
+$("#searchSubmitBack").click(function(){
 
   $(".searchCol").removeClass("profileClicked");
   $(".col1").removeClass("searchShift");
@@ -580,6 +757,7 @@ $("#submitBackButton").click(function(){
   $(".map").removeClass("searchShift");
   $(".tripInfo").removeClass("searchShift");
     $(".listingRow").removeClass("searchShift");
+    $(".wrapMapInfo").removeClass("show");
 
   google.maps.event.trigger(map, 'resize');
 });
