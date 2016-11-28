@@ -5,24 +5,28 @@
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Poppins:500" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
   </head>
   <body>
 
-    <?php include 'header.php'?>
+    <?php include 'header.php';?>
 
  <!-- animations -->
-
+<?php if(isset($_GET['message']))
+        if($_GET['message']=='success')
+          echo "<script>alert('You just posted a ride.')</script>" ?>
 
  <!--<div class="loadingScreen">
-  <div class="white-bg centered radius50">
-    <div class="logo-animation centered">
-        <div class="c1"></div>
-        <div class="c2"></div>
-        <div class="triangle2"></div>
-    </div>
-  </div>
-</div>-->
+      <div class="white-bg centered radius50">
+        <div class="logo-animation centered">
+            <div class="c1"></div>
+            <div class="c2"></div>
+            <div class="triangle2"></div>
+        </div>
+      </div>
+      </div>-->
 
 
     <div class="row removeMarginPadding removeMaxWidth">
@@ -112,26 +116,48 @@
           <li class="postButton blush-bg">
             <a class="orangeButton text-center" id="postButton" href="#postRide">Post</a>
               <ul class="vertical menu aqua-bg text-center">
-              <form id="postForm" method="post" action="test.php">
+              <form id="postForm" method="post" action="backend/postRideController.php">
+                    <li>
+                      Single Trip <input id="radioSingle" type="radio" name="tripType" value="singleTrip" checked><br><br>
+                      Periodic    <input id="radioMult" type="radio" name="tripType" value="periodic"><br><br>
+                    </li>
                     <li>
                       Departure:<br>
-                      <input id="searchDep3" type="text" size="50" placeholder="Departure Address" name="departure"><br>
+                      <input class="postRequestForms marginCenter" id="searchDep3" type="text" size="50" placeholder="Departure Address" name="departure"><br>
                     </li>
                     <li>
                       Destination:<br>
-                      <input id="searchDest3" type="text" size="50" placeholder="Destination Address" name="destination"><br>
+                      <input  class="postRequestForms marginCenter" id="searchDest3" type="text" size="50" placeholder="Destination Address" name="destination"><br>
                     </li>
                     <li>
-                      <br>
-                      Date:  <br>
-                      <input class="postRequestForms marginCenter" type="date" name="dep_date" min="2016-09-09">
+                      <div id="postDate">
+                        <br>
+                        Date:  <br>
+                        <input class="postRequestForms marginCenter" type="date" name="dep_date" min="2016-09-09">
+                      </div>
+                    </li
+                    <li>
+                    <div id="postDays">
+                    <br> Days: <br>
+                    M<input  type="checkbox"  name="dow[]" value="M">
+                    T<input  type="checkbox"   name="dow[]" value="T">
+                    W<input  type="checkbox"   name="dow[]" value="W">
+                    TH<input  type="checkbox"  name="dow[]" value="Th">
+                    F<input  type="checkbox"   name="dow[]" value="F">
+                    SAT<input  type="checkbox" name="dow[]" value="SAT">
+                    SUN<input  type="checkbox" name="dow[]" value="SUN">
+                    </div>
+                    </li>
+                    <li>
                       <br> Dep. Time: <br>
                       <input class="postRequestForms marginCenter" type="time" name="dep_time"><br><br>
                     </li>
                     <li>
-                      Riders &nbsp; &nbsp; &nbsp; &nbsp;
+                      Riders: <br>
                       <input class="postRequestForms" type="number" name="riders" min="1" max="10">
                     </li>
+                    <br>Distance <br> <input class="postRequestForms marginCenter" id="distance" type="text" name="distance" value=" "  style="text-align:center;" readonly><br>
+                    Duration <br> <input class="postRequestForms marginCenter" id="duration" type="text" name="duration" value=" " style="text-align:center;" readonly><br>
                     <li class=" floatBottomSubmitBotton fullWidth">
                     <button id="postMarker" class="submitButton orangeButton2" type="button" name="button">Search</button>
                     <button id="postSubmit" class="submitButton orangeButton2" type="submit"  name="button">Submit</button>
@@ -157,8 +183,8 @@
         Welcome to the World Greatest Ride Sharing Hub
         </p>
         </div>
-         <video playsinline autoplay muted loop poster="" id="bgvid">
-           <source src="./style/bgvid.mov">
+         <video playsinline autoplay muted loop poster="" id="bgvid" onended="run();">
+          <source id="ss" src="./style/vids/vid1.mp4" type='video/mp4'>
           </video>
 
 
@@ -247,7 +273,7 @@
         <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Message from Andres</li>
         <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 2</li>
         <li class="list-item "><img class="list-item-img" src="./style/pedo.jpg" href="#">Link 1</li>
-       
+
     </ul>
 
     <!-- Trigger/Open The Modal -->
@@ -296,6 +322,7 @@
 
       <div class="mapCol">
           <div class="wrapMapInfo">
+
               <div id="map" class="map"></div>
 
               <div class="postInfo">
@@ -312,7 +339,7 @@
                         esse cillum dolore eu fugiat nulla pariatur. Excepteur
                         sint occaecat cupidatat non proident, sunt in culpa qui
                         officia deserunt mollit anim id est laborum.</p>
-                        <?php 
+                        <?php
 
                           require_once('vendor/autoload.php');
 
@@ -349,16 +376,16 @@
                   <div class="tabs-panel is-active" id="panel1">
 
                     <ul class="listingsOfItems">
-                        <?php  
+                        <?php
                           $listOfRides = getallrides();
                           while($row = $listOfRides->fetch_assoc()) {?>
-                        <li class="list-item"><img class="list-item-img" src="./style/small_car.png" href="#">
-                                 Departure: &nbsp &nbsp<?php echo $row['startLocation']; ?>
-                                 Destination: &nbsp &nbsp<?php echo $row['endLocation']; ?>
-                                 Date: &nbsp &nbsp<?php echo $row['date']; ?>
-                                 Dep. Time: &nbsp &nbsp<?php echo $row['startTime']; ?>
-                                 Price:  $ &nbsp &nbsp<?php echo $row['price']; ?>
-                                 Periodic: &nbsp &nbsp<?php echo $row['isPeriodic']; ?>
+                        <li class="list-item  hvr-underline-from-center"><img class="list-item-img" src="./style/small_car.png" href="#">
+                                 &nbsp &nbsp Departure: &nbsp &nbsp<?php echo $row['startLocation']; ?>
+                                 &nbsp &nbsp Destination: &nbsp &nbsp<?php echo $row['endLocation']; ?>
+                                 &nbsp &nbsp Date: &nbsp &nbsp<?php echo $row['date']; ?>
+                                 &nbsp &nbsp Dep. Time: &nbsp &nbsp<?php echo $row['startTime']; ?>
+                                 &nbsp &nbsp Price:  $ &nbsp &nbsp<?php echo $row['price']; ?>
+                                 &nbsp &nbspPeriodic: &nbsp &nbsp<?php echo $row['isPeriodic']; ?>
 
                                   </li>
                           <?php }  ?>
@@ -382,7 +409,20 @@
 
  <script type="text/javascript">
 
+ /************video loop*******************/
+ video_count = 1;
+ videoPlayer = document.getElementById("ss");
+ video = document.getElementById("bgvid");
 
+ function run(){
+     video_count++;
+     if (video_count == 3) video_count = 1;
+     videoPlayer.setAttribute("src","video/vid"+video_count+".mp4");
+     video.play();
+
+ }
+
+ /************video loop end*******************/
 var imageIcon = {
   url: './style/car.png',
   // This marker is 20 pixels wide by 32 pixels high.
@@ -492,6 +532,20 @@ directionsService.route({
   if (status == google.maps.DirectionsStatus.OK) {
     directionsDisplay.setDirections(response);
 
+    var totalDistance = 0;
+    var totalDuration = 0;
+
+    var legs = response.routes[0].legs;
+for(var i=0; i<legs.length; ++i) {
+    totalDistance += legs[i].distance.value;
+    totalDuration += legs[i].duration.value;
+}
+
+totalDistance= totalDistance+'m';
+totalDuration= Math.round(totalDuration/60)+'mins';
+
+$('#distance').val(totalDistance);
+$('#duration').val(totalDuration);
   } else {
     window.alert('Directions request failed due to ' + status);
   }
@@ -762,10 +816,44 @@ $("#searchSubmitBack").click(function(){
   google.maps.event.trigger(map, 'resize');
 });
 
+// $("#radioSingle").click(function(){
+//     $("#postDays").hide();
+//
+// });
+
+// if ($('#radioSingle').is(':checked')) {
+//   $("#postDays").hide();
+// }
+//
+// if ($('#radioMult').is(':checked')) {
+//   $("#postDate").hide();
+// }
+
+
+
+// $("#radioMult").click(function(){
+//    $("#postDate").hide();
+// });
+
 $("#postMarker").click(function(){
   addMarker();
 });
 
+$('#postDays').hide();
+
+$('#radioSingle').change(function () {
+if (this.checked) {
+$('#postDays').hide();
+$('#postDate').show();
+}
+});
+
+$('#radioMult').change(function () {
+if (this.checked) {
+$('#postDays').show();
+$('#postDate').hide();
+}
+});
 
 
 </script>

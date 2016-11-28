@@ -17,7 +17,7 @@ aqua = #008F95;*/
 
 
 .postRequestForms{
-  width: 100px !important;
+  width: 200px !important;
   -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
@@ -109,7 +109,6 @@ aqua = #008F95;*/
   background-color:
   padding: 5px;
   margin-top: 3px;
-    border-radius: 7px;
 }
 
 .list-item-img{
@@ -596,7 +595,7 @@ border-color: transparent transparent transparent #3b88db;
 
 .mapCol.cover{
   height:90vh;
-  width:100vw;
+  width:100%;
   left:0px;
   display:block;
 }
@@ -659,18 +658,21 @@ border-color: transparent transparent transparent #3b88db;
 
 .introText{
   color:#E9B000 !important;
+  font-family: 'Fredoka One', cursive;
 }
 
 .textOverVid{
+  font-family: 'Fredoka One', cursive;
   padding-top: 20vh;
   line-height: 40px;
 
 }
 
 .introTitle {
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Fredoka One', cursive;
   color:#E9B000 !important;
-  font-size:100px;
+  font-size:200px;
+   /*text-shadow: 5px 5px 5px black;*/
 }
 
 
@@ -679,21 +681,21 @@ mustard = #E9B000;
 blush = #EB6E80;
 aqua = #008F95;*/
 .introDesc1{
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Fredoka One', cursive;
   color:white ;
   font-size:40px;
   display:inline;
 }
 
 .introDesc2{
-  font-family: 'Bungee Inline', cursive;
+font-family: 'Fredoka One', cursive;
   color:white ;
   font-size:40px;
   display:inline;
 }
 
 .introDesc3{
-  font-family: 'Bungee Inline', cursive;
+font-family: 'Fredoka One', cursive;
   color:white ;
   font-size:40px;
   display:inline;
@@ -707,7 +709,8 @@ aqua = #008F95;*/
 }*/
 
 *{
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Fredoka One', cursive;
+  
 }
 /******************************************** message modal box *********************************************/
 
@@ -944,3 +947,32 @@ aqua = #008F95;*/
   overflow-y: scroll;
 }
 /******************************************** Ratings *********************************************/
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 20px;
+  background: #2098D1;
+  height: 2px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}

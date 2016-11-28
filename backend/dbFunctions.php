@@ -51,10 +51,15 @@
 	}
 
 
-	function postRideDB($price, $startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW,$licenseId){
+	function postRideDB($price, $startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW,$licenseId,$distance,$maxriders){
 		global $db;
-
-		$sql = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, daysOfWeek, licenceID) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic',$date,'$daysOfW','$licenseId')";
+		if($isPeriodic == 'false'){
+			$sql = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, date, licenceID,distance,max_riders) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic','$date','$licenseId','$distance',$maxriders)";
+		}
+		else {
+			$sql = "INSERT INTO ride (price, startTime, startLocation, endLocation, isPeriodic, daysOfWeek, licenceID,distance,max_riders) VALUES ($price,'$startTime','$startLocation','$endLocation','$isPeriodic','$daysOfW','$licenseId','$distance',$maxriders)";
+		}
+		
 		
 		if ($db->query($sql) === TRUE) 
     		return "";
