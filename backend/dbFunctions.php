@@ -108,5 +108,32 @@
 		
 		return $result;
 	}
+	function getMaxNumberRiders($rideId){
+		global $db;
+		$sql = "SELECT max_riders from ride where rideID ='$rideId'";
+		$result = $db->query($sql);
+		$row = $result->fetch_assoc();
+		return $row['max_riders'];
+	}
+	function getCurrentNumberRiders($rideId){
+		global $db;
+		$sql = "SELECT * from takes_ride where ride_id ='$rideId'";
+		$result = $db->query($sql);
+		
+		return $result->num_rows;
+
+	}
+	function register_to_ride($username,$rideId){
+		global $db;
+		if(getCurrentNumberRiders($rideId)<getMaxNumberRiders($rideId)){
+			$sql = "INSERT INTO takes_ride (passager_email,ride_id) values ('$username','$rideId')";
+			if ($db->query($sql) === TRUE) 
+    			return "";
+			else 
+    			return "Error: " . $sql . "<br>" . $db->error;
+		}
+		else
+			return 'The ride is full!';
+	}
 	
  ?>

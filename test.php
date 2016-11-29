@@ -2,6 +2,6 @@
   include 'backend/dbconnection.php';
   include 'backend/dbFunctions.php';
 
-  echo 'test.php';
+  echo register_to_ride('dragon','20');
 	
 ?>

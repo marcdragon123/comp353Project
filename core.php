@@ -196,11 +196,13 @@
 
         <div class="myProfilePage show">
         <form id="profileForm">
+          <?php $info = getProfileInfo($_SESSION['user']); 
+          print_r($info); ?>
         <div style="margin-left:5em; margin-right:5em; padding-top:5em;">
             <div class="row">
               <div class="large-6 columns">
                 User Name: <br>
-                <input id="profName" type="text" size="50" placeholder="">
+                <input id="profName" type="text" size="50" placeholder="" value = '<?php echo $info['user_email'] ?>'>
               </div>
               <div class="large-3 columns">
                <br> Your Rating:
@@ -235,14 +237,14 @@
             <div class="row">
             <div class="large-6 columns">
             My Address: <br>
-              <input id="profAddress" type="text" size="50" placeholder="address">
+              <input id="profAddress" type="text" size="50" placeholder="address" value = '<?php echo $info['address']; ?>'>
               <input type="checkbox" id="star5" name="rating" value="5" />
             </div>
             </div>
             <div class="row">
                 <div class="large-4 columns">
                     Date of Birth:  <br>
-                    <input type="date" name="bday" min="1950-09-09">
+                    <input type="date" name="bday" min="1950-09-09" value = '<?php echo $info['dob'];?>'>
                     <input type="checkbox" id="star5" name="rating" value="5" />
                 </div>
                 <div class="large-4 columns">
@@ -330,6 +332,7 @@
               </div>
 
               <div class="tripInfo">
+              <?php  ?>
                   <p>Trip info, 1/5 stars, the man may be dangerous</p>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                      sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -350,7 +353,7 @@
 
                             \Stripe\Stripe::setApiKey($stripe['secret_key']);
                          ?>
-                         <form action="charge.php" method="post">
+                         <form action="backend/takeRideController.php" method="post">
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<?php echo $stripe['publishable_key']; ?>"
           data-description="Access for a year"
@@ -378,8 +381,11 @@
                     <ul class="listingsOfItems">
                         <?php
                           $listOfRides = getallrides();
-                          while($row = $listOfRides->fetch_assoc()) {?>
-                        <li class="list-item  hvr-underline-from-center"><img class="list-item-img" src="./style/small_car.png" href="#">
+                          date_default_timezone_set('UTC');
+                          while($row = $listOfRides->fetch_assoc()) { 
+                            
+                            if($row['date']>=date ( 'Y-m-d' )) {?>
+                        <li class="list-item  hvr-underline-from-center"><img class="list-item-img" src="./style/small_car.png" href="#" id='<?php echo $row['rideID']; ?>'>
                                  &nbsp &nbsp Departure: &nbsp &nbsp<?php echo $row['startLocation']; ?>
                                  &nbsp &nbsp Destination: &nbsp &nbsp<?php echo $row['endLocation']; ?>
                                  &nbsp &nbsp Date: &nbsp &nbsp<?php echo $row['date']; ?>
@@ -388,7 +394,7 @@
                                  &nbsp &nbspPeriodic: &nbsp &nbsp<?php echo $row['isPeriodic']; ?>
 
                                   </li>
-                          <?php }  ?>
+                          <?php }}  ?>
                     </ul>
 
                   </div>
