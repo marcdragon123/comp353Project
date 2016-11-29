@@ -354,12 +354,18 @@
                             \Stripe\Stripe::setApiKey($stripe['secret_key']);
                          ?>
                          <form action="backend/takeRideController.php" method="post">
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<?php echo $stripe['publishable_key']; ?>"
-          data-description="Access for a year"
-          data-amount="50000"
-          data-locale="auto"></script>
-</form>
+                         <input class="postRequestForms marginCenter" id="distance" type="text" name="departure" value=" "  style="text-align:center;" readonly>
+                         <input class="postRequestForms marginCenter" id="distance" type="text" name="destination" value=" "  style="text-align:center;" readonly>
+                         <input class="postRequestForms marginCenter" id="distance" type="text" name="d_time" value=" "  style="text-align:center;" readonly>
+                         <input class="postRequestForms marginCenter" id="distance" type="text" name="date" value=" "  style="text-align:center;" readonly>
+                         <input class="postRequestForms marginCenter" id="distance" type="text" name="distance" value=" "  style="text-align:center;" readonly>
+                         <input class="postRequestForms marginCenter" id="distance" type="text" name="rideId" value=" "  style="text-align:center;" readonly>
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="<?php echo $stripe['publishable_key']; ?>"
+                                    data-description="Access for a year"
+                                    data-amount="50000"
+                                    data-locale="auto"></script>
+                        </form>
                 <img class="trip-info-profile-img" src="./style/pedo.jpg" href="#">
                 <a class="backToListings " >back to Listings</a>
               </div>
