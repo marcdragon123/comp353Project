@@ -133,16 +133,18 @@ CREATE TABLE `ride` (
   `rideID` int(11) NOT NULL AUTO_INCREMENT,
   `price` float NOT NULL,
   `startTime` time(1) NOT NULL,
-  `startLocation` varchar(7) NOT NULL,
-  `endLocation` varchar(7) NOT NULL,
+  `startLocation` varchar(80) NOT NULL,
+  `endLocation` varchar(80) NOT NULL,
   `isPeriodic` varchar(5) NOT NULL,
   `date` date DEFAULT NULL,
-  `daysOfWeek` varchar(15) DEFAULT NULL,
+  `daysOfWeek` varchar(20) DEFAULT NULL,
   `licenceID` varchar(30) NOT NULL,
+  `distance` int(11) NOT NULL,
+  `max_riders` int(11) NOT NULL,
   PRIMARY KEY (`rideID`),
   KEY `driverLicence_idx` (`licenceID`),
   CONSTRAINT `licenceID` FOREIGN KEY (`licenceID`) REFERENCES `driver` (`licenceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +153,7 @@ CREATE TABLE `ride` (
 
 LOCK TABLES `ride` WRITE;
 /*!40000 ALTER TABLE `ride` DISABLE KEYS */;
-INSERT INTO `ride` VALUES (1,22.5,'12:12:12.0','H7M2X5','H7M2X5','false',NULL,NULL,'1234'),(2,10,'12:12:13.0','H7M2X5','H7M2X5','false',NULL,'W','1234'),(3,10,'12:12:13.0','H7M2X5','H7M2X5','false',NULL,'W','1234');
+INSERT INTO `ride` VALUES (11,307.08,'01:01:00.0','Laval, QC, Canada','Montreal, QC, Canada','false','2016-11-02',NULL,'1234',30708,0),(20,22255.9,'01:01:00.0','Concordia University - Sir George Williams Campus, Montreal, QC, Canada','Ottawa University - Peoples Bank Field, Ottawa, KS, United States','false','2016-11-25',NULL,'1234',2225592,2),(21,190.305,'03:14:00.0','Ottawa, ON, Canada','Laval, QC, Canada','false','2016-12-02',NULL,'1234',190305,4),(22,2.8002,'08:00:00.0','1828 Rue Joseph-Prévost, Laval, QC, Canada','Concordia University - Sir George Williams Campus, Montreal, QC, Canada','true',NULL,'M-T-W-Th-F-','1234',28002,3);
 /*!40000 ALTER TABLE `ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-26 15:37:53
+-- Dump completed on 2016-11-28 20:41:13
