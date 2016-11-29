@@ -1,44 +1,108 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foundation for Sites</title>
-  <link rel="stylesheet" href="css/foundation.css">
-  <link rel="stylesheet" href="css/app.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <div class="row">
+<div class="row">
     <div class="large-12 columns" style="text-align: center;">
-      <h1>Welcome!</h1>
+        <h1>Welcome!</h1>
     </div>
-  </div>
+</div>
 
-  <div class="row">
+<div class="row">
     <div class="small-3 columns">
-      <div class="callout">
-        <img src="images/Anonymous.jpg">
-        <div>
-          <?php
+        <div class="callout">
+            <img src="images/Anonymous.jpg">
+            <div>
+                <?php
           $user = "test case";
           echo "<h3 style='text-decoration: underline;text-align:center'> Hello $user!</h3>";
-          ?>
+                ?>
+            </div>
         </div>
-      </div>
     </div>
     <div class="small-9 columns">
-      <div class="primary callout">
-        <p><span style="font-weight: bold; text-align:center;">This is your user panel where you can view your reviews and your proposed special trips.</span></p><p> Please use this application responsibly.</p>
-      </div>
+        <div class="primary callout">
+            <p><span style="font-weight: bold; text-align:center;">This is this user's user panel. Ratings may be dispensed on this page.</span>
+            </p>
+            <p> Please use this application responsibly.</p>
+        </div>
     </div>
 
-  </div>
-  
+</div>
 
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/vendor/what-input.js"></script>
-  <script src="js/vendor/foundation.js"></script>
-  <script src="js/app.js"></script>
+<!-- TABLE THAT NEEDS TO BE CREATED, USER REVIEWS-->
+
+<div class="row">
+    <div class="small-12 columns">
+        <?php
+    session_start();
+
+    include('Super_db.php');
+
+    $user_email = 'user_mail';
+    $review = 'review';
+
+$sql = mysql_query("SELECT * FROM reviews"); ?>
+
+        <table id='display'>
+            <?php
+        while($rows = mysql_fetch_array($sql)) {
+    ?>
+            <tr>
+                <td><?php echo $rows[$user_email]; ?></td>
+            </tr>
+            <?php
+        }
+     ?>
+        </table>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="small-12 columns">
+        <form action="/////.php" method="post">
+            <table>
+                <tr>
+                    <th>Rating</th>
+                    <th>Submission</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="small-10 columns">
+                                <div class="slider" data-slider data-initial-start="3" data-step="1">
+                                    <span class="slider-handle" data-slider-handle role="slider" tabindex="1"
+                                          aria-controls="sliderOutput2"></span>
+                                    <span class="slider-fill" data-slider-fill></span>
+                                </div>
+                            </div>
+                            <div class="small-2 columns">
+                                <input type="number" id="sliderOutput2">
+                            </div>
+                        </div>
+
+                    </td>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+
+
+            </table>
+    </div>
+</div>
+
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

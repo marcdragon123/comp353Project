@@ -2,67 +2,69 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>GetaRoom!</title>
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/styleMihai.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>GetaRoom!</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/styleMihai.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
-	<div class="container">
-		<div class="top">
-			<h1 id="title" class="hidden"><span id="logo">Welcome to <span>Super!</span></span></h1>
-		</div>
-		<div class="login-box animated fadeInUp">
-			<div class="box-header">
-				<h2>Registration</h2>
-			</div>
-		<form name="myForm" action="Register.php">
-		<div class="container">
-			<label for="email">Email</label>
-			<br/>
-			<input type="text" name="dasEmail" id="email" placeholder="Enter email here" required>
-			<br/>
-			<label for="password">Password</label>
-			<br/>
-			<input type="password" name="dasPassword" id="password" placeholder="Enter Password here" required>
-			<br/>
-			<label for="refName">Referal Name</label>
-			<br/>
-			<input type="text" name="referalName" id="refName" placeholder="Enter name of the person that refered you!" required>
-			<br/>
-			<label for="refCode">Referal Code</label>
-			<br/>
-			<input type="text" name="referalCode" id="refCode"
-			placeholder="Enter the referal code of the account that refered you">
-			<button type="submit">Register</button>
-			<input type="checkbox" checked="checked">Remember me
-			<br/>
-			</div>
-		</form>
-		<button onclick="window.location.href='/Login.html'">Already registered? Login!</button>
-	</div>
+<div class="container">
+    <div class="top">
+        <h1 id="title" class="hidden"><span id="logo">Welcome to <span>Super!</span></span></h1>
+    </div>
+    <div class="login-box animated fadeInUp">
+        <div class="box-header">
+            <h2>Registration</h2>
+        </div>
+        <form name="myForm" action="Register.php">
+            <div class="container">
+                <label for="email">Email</label>
+                <br/>
+                <input type="text" name="dasEmail" id="email" placeholder="Enter email here" required>
+                <br/>
+                <label for="password">Password</label>
+                <br/>
+                <input type="password" name="dasPassword" id="password" placeholder="Enter Password here" required>
+                <br/>
+                <label for="refName">Referal Name</label>
+                <br/>
+                <input type="text" name="referalName" id="refName"
+                       placeholder="Enter name of the person that refered you!" required>
+                <br/>
+                <label for="refCode">Referal Code</label>
+                <br/>
+                <input type="text" name="referalCode" id="refCode"
+                       placeholder="Enter the referal code of the account that refered you">
+                <button type="submit">Register</button>
+                <input type="checkbox" checked="checked">Remember me
+                <br/>
+            </div>
+        </form>
+        <button onclick="window.location.href='/Login.html'">Already registered? Login!</button>
+    </div>
 </body>
 
 <script>
-	$(document).ready(function () {
-    	$('#logo').addClass('animated fadeInDown');
-    	$("input:text:visible:first").focus();
-	});
-	$('#username').focus(function() {
-		$('label[for="username"]').addClass('selected');
-	});
-	$('#username').blur(function() {
-		$('label[for="username"]').removeClass('selected');
-	});
-	$('#password').focus(function() {
-		$('label[for="password"]').addClass('selected');
-	});
-	$('#password').blur(function() {
-		$('label[for="password"]').removeClass('selected');
-	});
+    $(document).ready(function () {
+        $('#logo').addClass('animated fadeInDown');
+        $("input:text:visible:first").focus();
+    });
+    $('#username').focus(function () {
+        $('label[for="username"]').addClass('selected');
+    });
+    $('#username').blur(function () {
+        $('label[for="username"]').removeClass('selected');
+    });
+    $('#password').focus(function () {
+        $('label[for="password"]').addClass('selected');
+    });
+    $('#password').blur(function () {
+        $('label[for="password"]').removeClass('selected');
+    });
 
 
 </script>

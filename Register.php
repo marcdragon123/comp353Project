@@ -10,17 +10,14 @@ function Register(string $Email, string $dob, string $FirstName, string $Lastnam
 {
     $query1 = NULL;
     $query2 = NULL;
-    if (IsValide($Email) && IsValide($Password))
-    {
-        $query1 = "INSERT INTO `users` (`email`,`password`,`isAdmin`,`status`,`balance`) VALUES (`".$Email."`,`".$Password."`,`false`,`null,`0.0`)";
+    if (IsValide($Email) && IsValide($Password)) {
+        $query1 = "INSERT INTO `users` (`email`,`password`,`isAdmin`,`status`,`balance`) VALUES (`" . $Email . "`,`" . $Password . "`,`false`,`null,`0.0`)";
     }
-    if(IsValide($dob) && IsValide($FirstName) && IsValide($Lastname) && IsValide($Address) && IsValide($City) && IsValide($query))
-    {
-        $query2 = "INSERT INTO `personalinfo`(`user_email`,`firstname`,`lastname`,`address`,`city`,`dob`) VALUES (`".$Email."`,`".$FirstName."`,`".$Lastname."`,`".$Address."`,`".$City."`,`".$dob."`)";
+    if (IsValide($dob) && IsValide($FirstName) && IsValide($Lastname) && IsValide($Address) && IsValide($City) && IsValide($query)) {
+        $query2 = "INSERT INTO `personalinfo`(`user_email`,`firstname`,`lastname`,`address`,`city`,`dob`) VALUES (`" . $Email . "`,`" . $FirstName . "`,`" . $Lastname . "`,`" . $Address . "`,`" . $City . "`,`" . $dob . "`)";
     }
-    
-    if (IsValide($query2) && IsValide($query1))
-    {
+
+    if (IsValide($query2) && IsValide($query1)) {
         $db->query($query1);
         $db->query($query2);
     }
@@ -28,12 +25,9 @@ function Register(string $Email, string $dob, string $FirstName, string $Lastnam
 
 function IsValide(string $input)
 {
-    if (!empty($input) && !strpos($input,'DROP'))
-    {
+    if (!empty($input) && !strpos($input, 'DROP')) {
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 }
