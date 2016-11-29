@@ -15,10 +15,14 @@
 
  <!-- animations -->
 <?php if(isset($_GET['message']))
+
         if($_GET['message']=='success')
           echo "<script>alert('You just posted a ride.')</script>";
         else if($_GET['message']=='m1')
-         echo "<script>alert('You got registered to the ride.')</script>";?>
+         echo "Ride was full!!";
+       else if($_GET['message']=='m2')
+         echo "You got registered to the ride.";
+       ?>
 
  <!--<div class="loadingScreen">
       <div class="white-bg centered radius50">
@@ -361,7 +365,7 @@
                          <input class="postRequestForms marginCenter" id="distance" type="text" name="d_time" value=" "  style="text-align:center;" readonly>
                          <input class="postRequestForms marginCenter" id="distance" type="text" name="date" value=" "  style="text-align:center;" readonly>
                          <input class="postRequestForms marginCenter" id="distance" type="text" name="distance" value=" "  style="text-align:center;" readonly>
-                         <input class="postRequestForms marginCenter" id="distance" type="text" name="rideId" value=" "  style="text-align:center;" readonly>
+                         <input class="postRequestForms marginCenter" id="r1" type="text" name="r_id" value=""  style="text-align:center;" readonly>
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="<?php echo $stripe['publishable_key']; ?>"
                                     data-description="Access for a year"
@@ -387,19 +391,28 @@
                   <div class="tabs-panel is-active" id="panel1">
 
                     <ul class="listingsOfItems">
+                    <script type="text/javascript">
+                      
+                      function setRideForm(id){
+                        //alert(id);
+                              document.getElementById('r1').value = id;
+  }
+                    </script>
                         <?php
                           $listOfRides = getallrides();
                           date_default_timezone_set('UTC');
                           while($row = $listOfRides->fetch_assoc()) { 
                             
                             if($row['date']>=date ( 'Y-m-d' )) {?>
-                        <li class="list-item  hvr-underline-from-center"><img class="list-item-img" src="./style/small_car.png" href="#" id='<?php echo $row['rideID']; ?>'>
+                        <li  class="list-item  hvr-underline-from-center" id='<?php echo $row['rideID']; ?>' onclick='setRideForm(this.id);'><img class="list-item-img" src="./style/small_car.png" href="#"  >
                                  &nbsp &nbsp Departure: &nbsp &nbsp<?php echo $row['startLocation']; ?>
                                  &nbsp &nbsp Destination: &nbsp &nbsp<?php echo $row['endLocation']; ?>
                                  &nbsp &nbsp Date: &nbsp &nbsp<?php echo $row['date']; ?>
                                  &nbsp &nbsp Dep. Time: &nbsp &nbsp<?php echo $row['startTime']; ?>
                                  &nbsp &nbsp Price:  $ &nbsp &nbsp<?php echo $row['price']; ?>
                                  &nbsp &nbspPeriodic: &nbsp &nbsp<?php echo $row['isPeriodic']; ?>
+                                 <?php if (getCurrentNumberRiders($row['rideID'])==getMaxNumberRiders($row['rideID'])) 
+                                 echo 'FULL';?>
 
                                   </li>
                           <?php }}  ?>

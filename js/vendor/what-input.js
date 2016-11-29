@@ -104,7 +104,7 @@ window.whatInput = (function() {
       buffer = false;
     }, 650);
   }
-
+  
   function bufferedEvent(event) {
     if (!buffer) setInput(event);
   }
