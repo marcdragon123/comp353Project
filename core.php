@@ -16,7 +16,9 @@
  <!-- animations -->
 <?php if(isset($_GET['message']))
         if($_GET['message']=='success')
-          echo "<script>alert('You just posted a ride.')</script>" ?>
+          echo "<script>alert('You just posted a ride.')</script>";
+        else if($_GET['message']=='m1')
+         echo "<script>alert('You got registered to the ride.')</script>";?>
 
  <!--<div class="loadingScreen">
       <div class="white-bg centered radius50">
