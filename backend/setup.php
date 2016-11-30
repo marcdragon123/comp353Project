@@ -1,5 +1,5 @@
-<?php 
-	include "dbconnection.php";
-	include 'dbFunctions.php';
-	
- ?>
+<?php
+include "dbconnection.php";
+include 'dbFunctions.php';
+
+?>
