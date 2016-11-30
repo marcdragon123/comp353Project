@@ -135,5 +135,13 @@
 		else
 			return 'The ride is full!';
 	}
+	function getUserLicense($user_email){
+		global $db;
+		$sql = "SELECT licenceID from driver where user_email = '$user_email'";
+		$result = $db->query($sql);
+		$row = $result->fetch_assoc();
+		return $row['licenceID'];
+
+	}
 	
  ?>
