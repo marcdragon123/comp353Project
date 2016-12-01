@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+
 <div class="row">
     <div class="large-12 columns" style="text-align: center;">
         <h1>Welcome!</h1>
     </div>
 </div>
-
+    
 <div class="row">
     <div class="small-3 columns">
         <div class="callout">
@@ -52,11 +53,11 @@
             date_default_timezone_set('UTC');
         while($row = $rides->fetch_assoc()) {
             if($row['date']>=date ( 'Y-m-d' )) {
-            //print_r($row);
     ?>
-            <tr>
-                <td><?php echo $row['rideID']; ?></td>
-                <td>
+            <tr><form action ='backend/eraseRideController.php' method ='post'>
+                <td>Ride id:<input  type="text"  name ='rideId' value="<?php echo $row['rideID']; ?> "  style="text-align:center;" readonly></td>
+
+                <!--<td>
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>
                             <a href="#">Modify</a>
@@ -66,7 +67,10 @@
                                 <li><a href="#" data-reveal-id="AdminLastNameModal">Last name</a></li>
                             </ul>
                     </ul>
-                </td>
+                </td>-->
+                <td><input type="submit" name="" value='Modify'></td>
+                <td><input type="submit" name="" value ='Erase'></td>
+                </form>
             </tr>
             <?php
         }}
@@ -118,23 +122,23 @@
     <div class="small-6 columns">
 
         <?php
-    session_start();
 
-    include('Super_db.php');
+            $profileInfos = getAllProfileInfo();
+
 
     $user_email = 'user_email';
     $firstname = 'firstname';
     $lastname = 'lastname';
 
 
-$sql = mysql_query("SELECT * FROM personalinfo"); ?>
+?>
 
         <table id='display'>
             <?php
-        while($rows = mysql_fetch_array($sql)) {
+        while($row = $profileInfos->fetch_assoc()) {
     ?>
             <tr>
-                <td><?php echo $rows[$user_email]; ?></td>
+                <td><?php echo $row['user_email']; ?></td>
                 <td>
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>

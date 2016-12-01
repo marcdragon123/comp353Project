@@ -144,7 +144,7 @@ CREATE TABLE `ride` (
   PRIMARY KEY (`rideID`),
   KEY `driverLicence_idx` (`licenceID`),
   CONSTRAINT `licenceID` FOREIGN KEY (`licenceID`) REFERENCES `driver` (`licenceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +153,7 @@ CREATE TABLE `ride` (
 
 LOCK TABLES `ride` WRITE;
 /*!40000 ALTER TABLE `ride` DISABLE KEYS */;
-INSERT INTO `ride` VALUES (11,307.08,'01:01:00.0','Laval, QC, Canada','Montreal, QC, Canada','false','2016-11-02',NULL,'1234',30708,0),(20,22255.9,'01:01:00.0','Concordia University - Sir George Williams Campus, Montreal, QC, Canada','Ottawa University - Peoples Bank Field, Ottawa, KS, United States','false','2016-11-25',NULL,'1234',2225592,2),(21,190.305,'03:14:00.0','Ottawa, ON, Canada','Laval, QC, Canada','false','2016-12-02',NULL,'1234',190305,2),(27,2.7603,'01:01:00.0','Saint-Laurent, Montreal, QC, Canada','Honoré-Beaugrand, Montreal, QC, Canada','false','2016-11-30',NULL,'1234',27603,5),(28,71.6035,'01:01:00.0','New York, NY, United States','Gatineau, QC, Canada','false','2016-12-03',NULL,'1234',716035,1),(29,49.1403,'01:01:00.0','Manhattan, New York, NY, United States','Plattsburgh, NY, United States','false','2016-12-03',NULL,'1234',491403,1);
+INSERT INTO `ride` VALUES (27,2.7603,'01:01:00.0','Saint-Laurent, Montreal, QC, Canada','Honoré-Beaugrand, Montreal, QC, Canada','false','2016-11-30',NULL,'1234',27603,5),(36,55.0095,'01:01:00.0','Laval, QC, Canada','Toronto, ON, Canada','false','2016-12-03',NULL,'1234',550095,1);
 /*!40000 ALTER TABLE `ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,8 +169,8 @@ CREATE TABLE `takes_ride` (
   `ride_id` int(11) NOT NULL,
   PRIMARY KEY (`passager_email`,`ride_id`),
   KEY `ride_id_idx` (`ride_id`),
-  CONSTRAINT `passager` FOREIGN KEY (`passager_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `ride_id` FOREIGN KEY (`ride_id`) REFERENCES `ride` (`rideID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `passager` FOREIGN KEY (`passager_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ride_id` FOREIGN KEY (`ride_id`) REFERENCES `ride` (`rideID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,7 +180,7 @@ CREATE TABLE `takes_ride` (
 
 LOCK TABLES `takes_ride` WRITE;
 /*!40000 ALTER TABLE `takes_ride` DISABLE KEYS */;
-INSERT INTO `takes_ride` VALUES ('mihai',21),('tom',21),('a_nunezz',27),('a_nunezz',28);
+INSERT INTO `takes_ride` VALUES ('a_nunezz',27);
 /*!40000 ALTER TABLE `takes_ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-30  9:44:49
+-- Dump completed on 2016-11-30 22:19:36

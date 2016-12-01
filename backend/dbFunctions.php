@@ -143,5 +143,22 @@
 		return $row['licenceID'];
 
 	}
-	
+	function getAllProfileInfo(){
+		global $db;
+		$sql ="SELECT * from personalinfo";
+		$result = $db->query($sql);
+		return $result;
+	}
+	function deleteRide($ride_id){
+		global $db;
+		print_r($db);
+		$sql = "DELETE FROM ride where rideID = $ride_id";
+		echo $sql;
+		if ($db->query($sql) === TRUE) {
+    return "";
+} else {
+    return "Error deleting record: " . $db->error;
+}
+
+	}
  ?>
