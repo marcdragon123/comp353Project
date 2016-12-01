@@ -93,34 +93,58 @@
           <li class="requestButton aqua-bg">
             <a class="orangeButton text-center" id="requestButton" href="#findRide">Request</a>
             <ul class="vertical menu blush-bg text-center ">
-            <form id="requestForm">
-            <li>
-              Departure:<br>
-              <input id="searchDep2" type="text" size="50" placeholder="Departure Address"><br>
-            </li>
-            <li>
-              Destination:<br>
-              <input id="searchDest2" type="text" size="50" placeholder="Destination Address"><br>
-            </li>
-              <li>
-                <br>
-                Date:  <br>
-                <input class="postRequestForms marginCenter" type="date" name="bday" min="2016-09-09">
-                <br> Dep. Time: <br>
-                <input class="postRequestForms marginCenter" type="time" name="usr_time"><br><br>
-              </li>
-              <li>
-              </li>
-              <li>
-                Riders <br>
-                <input class="postRequestForms marginCenter" type="number" name="quantity" min="1" max="10">
-              </li>
-              <li class=" floatBottomSubmitBotton fullWidth"><button class="submitButton orangeButton2" type="button" name="button">Submit</button></li>
-              </form>
+            <form id="requestForm" method="post" action="backend/postRequestController.php">
+                    <li>
+                      Single Trip <input id="radioSingle2" type="radio" name="tripType" value="singleTrip" checked><br><br>
+                      Periodic    <input id="radioMult2" type="radio" name="tripType" value="periodic"><br><br>
+                    </li>
+                    <li>
+                      Departure:<br>
+                      <input class="postRequestForms marginCenter" id="searchDep3" type="text" size="50" placeholder="Departure Address" name="departure"><br>
+                    </li>
+                    <li>
+                      Destination:<br>
+                      <input  class="postRequestForms marginCenter" id="searchDest3" type="text" size="50" placeholder="Destination Address" name="destination"><br>
+                    </li>
+                    <li>
+                      <div id="postDate">
+                        <br>
+                        Date:  <br>
+                        <input class="postRequestForms marginCenter" type="date" name="dep_date" min="2016-09-09">
+                      </div>
+                    </li
+                    <li>
+                    <div id="postDays">
+                    <br> Days: <br>
+                    M<input  type="checkbox"  name="dow[]" value="M">
+                    T<input  type="checkbox"   name="dow[]" value="T">
+                    W<input  type="checkbox"   name="dow[]" value="W">
+                    TH<input  type="checkbox"  name="dow[]" value="Th">
+                    F<input  type="checkbox"   name="dow[]" value="F">
+                    SAT<input  type="checkbox" name="dow[]" value="SAT">
+                    SUN<input  type="checkbox" name="dow[]" value="SUN">
+                    </div>
+                    </li>
+                    <li>
+                      <br> Dep. Time: <br>
+                      <input class="postRequestForms marginCenter" type="time" name="dep_time"><br><br>
+                    </li>
+                    <li>
+                      Riders: <br>
+                      <input class="postRequestForms" type="number" name="riders" min="1" max="10">
+                    </li>
+                    <br>Distance <br> <input class="postRequestForms marginCenter" id="distance" type="text" name="distance" value=" "  style="text-align:center;" readonly><br>
+                    Duration <br> <input class="postRequestForms marginCenter" id="duration" type="text" name="duration" value=" " style="text-align:center;" readonly><br>
+                    <li class=" floatBottomSubmitBotton fullWidth">
+                    
+                    <button id="requestSubmit" class="submitButton orangeButton2" type="submit"  name="button">Submit</button>
+                    </li>
+                  </form>
             </ul>
           </li>
           <li class="postButton blush-bg">
-            <a class="orangeButton text-center" id="postButton" href="#postRide">Post</a>
+          <?php if(isDriver($_SESSION['user'])) {?>
+            <a class="orangeButton text-center" id="postButton" href="#postRide">Post</a><?php } ?>
               <ul class="vertical menu aqua-bg text-center">
               <form id="postForm" method="post" action="backend/postRideController.php">
                     <li>
@@ -425,9 +449,9 @@
                 </div>
                 </div>
 
-//////////////////////////////////////request listing//////////////////////////
+<!-----------------------------------------------request listing---------------------------------------------------------------->
 
-                <div class="listingRequest hide">
+                <div class="listingRequest">
 
                     <ul class="listingsOfItems">
                     <script type="text/javascript">
@@ -443,23 +467,25 @@
                           while($row = $listOfRides->fetch_assoc()) { 
                             
                             if($row['date']>=date ( 'Y-m-d' )) {?>
-                              <li  class="list-item  hvr-underline-from-center" id='<?php echo $row['rideID']; ?>' onclick='setRideForm(this.id);'><img class="list-item-img" src="./style/small_car.png" href="#"  >
+                            <form id='requestFullfillForm' action='backend/respondRequestController.php' method ='post'>
+                              <li  class="list-item-post  hvr-underline-from-center" id='<?php echo $row['rideID']; ?>' onclick='setRideForm(this.id);'><img class="list-item-img" src="./style/small_car.png" href="#"  >
                                  &nbsp &nbsp Departure: &nbsp &nbsp
-                                  <input  name="startLocation" value='<?php echo $row['startLocation']; ?>'  readonly>
+                                  <input  name="startLocation" value='<?php echo $row['start_location']; ?>'  readonly>
+                                  <input  name="startLocation" value='<?php echo $row['request_id']; ?>'  readonly>
                                  &nbsp &nbsp Destination: &nbsp &nbsp
-                                 <input  name="endLocation" value='<?php echo $row['endLocation']; ?>'  readonly>
+                                 <input  name="endLocation" value='<?php echo $row['end_location']; ?>'  readonly>
                                  &nbsp &nbsp Date: &nbsp &nbsp
                                  <input  name="date" value='<?php echo $row['date']; ?>'  readonly>
-                                 &nbsp &nbsp Dep. Time: &nbsp &nbsp<?php echo $row['startTime']; ?>
-                                 <input  name="startTime" value='<?php echo $row['startTime']; ?>'  readonly>
-                                 &nbsp &nbsp Price:  $ &nbsp &nbsp
-                                 <input  name="price" value='<?php echo $row['price']; ?>'  readonly>
+                                 &nbsp &nbsp Dep. Time: &nbsp &nbsp
+                                 <input  name="startTime" value='<?php echo $row['start_time']; ?>'  readonly>
+    
                                  &nbsp &nbsp Periodic: &nbsp &nbsp
                                  <input  name="isPeriodic" value='<?php echo $row['isPeriodic']; ?>'  readonly>
                                  <?php //if (getCurrentNumberRiders($row['rideID'])==getMaxNumberRiders($row['rideID'])) 
                                  //echo 'FULL';?>
-
+                                 <button type="submit"  class="fulfillRequestButton">Fulfill Request</button>
                                   </li>
+                            </form>
                           <?php }}  ?>
                     </ul>
 

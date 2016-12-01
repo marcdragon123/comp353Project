@@ -97,6 +97,23 @@
 		else 
     		return "Error: " . $sql . "<br>" . $db->error;
 	}
+
+	function postRequestDB($startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW){
+		global $db;
+		if($isPeriodic == 'false'){
+			$sql = "INSERT INTO ride_requests (start_time, start_location, end_location, isPeriodic, date) VALUES ('$startTime','$startLocation','$endLocation','$isPeriodic','$date')";
+		}
+		else {
+			$sql = "INSERT INTO ride_requests (start_time, start_location, end_location, isPeriodic, dates_of_week) VALUES ('$startTime','$startLocation','$endLocation','$isPeriodic','$daysOfW')";
+		}
+		
+		
+		if ($db->query($sql) === TRUE) 
+    		return "";
+		else 
+    		return "Error: " . $sql . "<br>" . $db->error;
+	}
+
 	/**
 	*	Function addDriverDB
 	*		This function adds to the database information about a user who wants to be a driver
@@ -213,6 +230,15 @@
 	function suspendUser($user){
 		global $db;
 		$sql="UPDATE users set status ='suspended' where email='$user'";
+		if ($db->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
+	}
+	function makeAdmin($user){
+		global $db;
+		$sql="UPDATE users set isAdmin ='true' where email='$user'";
 		if ($db->query($sql) === TRUE) {
     echo "Record updated successfully";
 } else {

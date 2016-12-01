@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	include 'dbconnection.php';
-  include 'dbFunctions.php';
+    include 'dbFunctions.php';
   	$licence = getUserLicense($_SESSION['user']);
 	print_r($_POST);
 

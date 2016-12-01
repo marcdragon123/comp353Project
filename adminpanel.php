@@ -142,7 +142,7 @@ include 'backend/setup.php';
             <tr><form action ='backend/<?php if($row['status']=='active') echo 'suspendUserController'; else echo 'activeUserController' ;?>.php#display' method ='post'>
                 <td><input  type="text"  name ='user_email' value="<?php echo $row['email']; ?> "  style="text-align:center;" readonly></td>
                 <td>Status:<?php echo $row['status'] ?></td>
-               
+                <td><input type="submit" name="" value='Make admin'></td>
                 <td><input class="<?php if ($row['status']=='active') echo 'alert'; ?> button" type="submit" name="" value='<?php if ($row['status']=='active') echo 'Suspend'; else echo 'Activate'; ?>'></td>
                 <!-- And so on-->
                 </form>
