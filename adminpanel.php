@@ -1,3 +1,6 @@
+<?php session_start();
+    include "backend/setup.php";
+ ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 <head>
@@ -37,27 +40,22 @@
 <div class="row">
     <div class="small-6 columns">
         <?php
-    session_start();
+   
 
-    include('Super_db.php');
+        $rides = getAllRides();
+     
 
-    $rideID = 'rideID';
-    $price = 'price';
-    $startTime = 'startTime';
-    $startLocation = 'startLocation';
-    $endLocation = 'endLocation';
-    $licenseID = 'licenseID';
-    $date = 'date'
-
-
-$sql = mysql_query("SELECT * FROM ride"); ?>
+ ?>
 
         <table id='display'>
             <?php
-        while($rows = mysql_fetch_array($sql)) {
+            date_default_timezone_set('UTC');
+        while($row = $rides->fetch_assoc()) {
+            if($row['date']>=date ( 'Y-m-d' )) {
+            //print_r($row);
     ?>
             <tr>
-                <td><?php echo $rows[$rideID]; ?></td>
+                <td><?php echo $row['rideID']; ?></td>
                 <td>
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>
@@ -71,7 +69,7 @@ $sql = mysql_query("SELECT * FROM ride"); ?>
                 </td>
             </tr>
             <?php
-        }
+        }}
      ?>
         </table>
 
