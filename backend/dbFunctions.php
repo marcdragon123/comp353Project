@@ -19,6 +19,31 @@
 		else
 			return '';
 	}
+	function insertUser($email,$password){
+		global $db;
+		if(userExist($email)==""){
+		$hash = password_hash($password, PASSWORD_DEFAULT);
+			$sql = "INSERT INTO users (email,password,isAdmin,status,balance) values ('$email','$hash','false','active',0)";
+			if ($db->query($sql) === TRUE) 
+    			return "";
+			else 
+    			return "Error: " . $sql . "<br>" . $db->error;
+		}
+    		else return 'problem';
+		
+
+	}
+	function insertPersonlInfo($email,$fname,$lname,$address,$city,$dob){
+		
+		global $db;
+			$sql = "INSERT INTO personalinfo (user_email,firstname,lastname,address,city,dob) values ('$email','$fname','$lname','$address','$city','$dob')";
+			if ($db->query($sql) === TRUE) 
+    			return "";
+			else 
+    			return "Error: " . $sql . "<br>" . $db->error;
+    		
+
+	}
 	
 	/**
 	*	Function canLogin

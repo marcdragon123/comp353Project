@@ -3,6 +3,8 @@
   include 'backend/dbconnection.php';
   include 'backend/dbFunctions.php';
 
-  deleteRide(29);
+  echo insertUser('kebe1','1234');
+  echo insertPersonlInfo('kebe1','kebe','kebe','somewhere','caracas','12-12-12');
+
 	
 ?>

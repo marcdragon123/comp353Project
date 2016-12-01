@@ -1,15 +1,39 @@
+/* FOR LOG IN PAGE */
+body{
+    background: #EDEDED;
+    color:#555;
+}
+form{
+    padding: 20px 20px 0px 20px;
+    border-color: black;
+    background: #e6e6e6;
+    box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.2);
+}
 #welcome {
     height: 100vh;
 }
-
-#welcome h3{
+h3{
     text-align: center;
 }
-
 #register {
     height:100vh;
+    padding-bottom: 20px;
 }
-
 #loginModule{
     margin-top: 20vh;
+    background: #e6e6e6;
+    box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.2)
 }
+
+#welcomeMessage{
+    margin-top: 5vh;
+}
+.red {
+    text-align: center;
+}
+formInfo {
+    font-weight: bolder;
+    font-size: 20px;   
+}
+
+/* FOR INVITE FRIEND */
