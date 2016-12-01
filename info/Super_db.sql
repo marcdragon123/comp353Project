@@ -118,7 +118,7 @@ CREATE TABLE `personalinfo` (
 
 LOCK TABLES `personalinfo` WRITE;
 /*!40000 ALTER TABLE `personalinfo` DISABLE KEYS */;
-INSERT INTO `personalinfo` VALUES ('a_nunezz','Andres','Nunez','1828 Joseph-Prévost','Laval','1992-12-09'),('tom','Tomas','Nunnez','123 funny road','funnyville','1993-03-03');
+INSERT INTO `personalinfo` VALUES ('a_nunezz','Andres','Nunez','1828 Joseph-Prévost','Laval','1992-12-09'),('kebe','kebe','kebe','somewhere','caracas','2012-12-12'),('kebe1','kebe','kebe','somewhere','caracas','2012-12-12'),('kebe2','kebe2','kebe2','ke','ke','2016-12-21'),('newguy','newguy','newguy','asdf','asdf','2016-12-07'),('tom','Tomas','Nunnez','123 funny road','funnyville','1993-03-03');
 /*!40000 ALTER TABLE `personalinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `ride` (
   PRIMARY KEY (`rideID`),
   KEY `driverLicence_idx` (`licenceID`),
   CONSTRAINT `licenceID` FOREIGN KEY (`licenceID`) REFERENCES `driver` (`licenceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,8 +153,37 @@ CREATE TABLE `ride` (
 
 LOCK TABLES `ride` WRITE;
 /*!40000 ALTER TABLE `ride` DISABLE KEYS */;
-INSERT INTO `ride` VALUES (27,2.7603,'01:01:00.0','Saint-Laurent, Montreal, QC, Canada','Honoré-Beaugrand, Montreal, QC, Canada','false','2016-11-30',NULL,'1234',27603,5),(36,55.0095,'01:01:00.0','Laval, QC, Canada','Toronto, ON, Canada','false','2016-12-03',NULL,'1234',550095,1);
+INSERT INTO `ride` VALUES (42,168.102,'01:01:00.0','Vancouver, BC, Canada','Saskatchewan, Canada','false','2016-12-31',NULL,'1234',1681025,2);
 /*!40000 ALTER TABLE `ride` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ride_requests`
+--
+
+DROP TABLE IF EXISTS `ride_requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ride_requests` (
+  `request_id` int(11) NOT NULL,
+  `price` float NOT NULL,
+  `start_time` time(1) NOT NULL,
+  `start_location` varchar(80) NOT NULL,
+  `end_location` varchar(80) NOT NULL,
+  `isPeriodic` varchar(5) NOT NULL,
+  `date` date DEFAULT NULL,
+  `dates_of_week` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`request_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ride_requests`
+--
+
+LOCK TABLES `ride_requests` WRITE;
+/*!40000 ALTER TABLE `ride_requests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ride_requests` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -180,7 +209,7 @@ CREATE TABLE `takes_ride` (
 
 LOCK TABLES `takes_ride` WRITE;
 /*!40000 ALTER TABLE `takes_ride` DISABLE KEYS */;
-INSERT INTO `takes_ride` VALUES ('a_nunezz',27);
+INSERT INTO `takes_ride` VALUES ('a_nunezz',42),('mihai',42);
 /*!40000 ALTER TABLE `takes_ride` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +236,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('a_nunezz','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','true','active',0),('dragon','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','false','active',0),('mihai','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','false','active',0),('tom','$2y$10$juFBCfWpcYaFXB.L7/0yQ.OHQQkvcPvGVXEklTjIj5JnUQst2bJKm','false','active',0);
+INSERT INTO `users` VALUES ('a_nunezz','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','true','active',0),('dragon','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','false','suspended',0),('kebe','$2y$10$bVI80B7Vo9U4aDk2dO8RI.SFfv7agNaQSNkeC/EPnj8xCWBrnxEQ6','false','suspended',0),('kebe1','$2y$10$h9pndqWAdv4ZiFsQzFg.fOjeWtBB1biZjN3RK7HUOEYnSTohB.csC','false','suspended',0),('kebe2','$2y$10$bMJ2omRw8yHI35ih/jEDCOQSLzecpTZr5H9KJjTHDc9URoPUT6oqK','false','suspended',0),('mihai','$2y$10$6x1pw2unBT7fuB/YYSw6B.MvbsCgEHue/KadTaouR9M3fV6x.ngz.','false','suspended',0),('newguy','$2y$10$SdJSycyAAd0muf0PH63eNu0SUit5FlecxT97QoAKVEUr86XrL7Tp.','false','suspended',0),('tom','$2y$10$juFBCfWpcYaFXB.L7/0yQ.OHQQkvcPvGVXEklTjIj5JnUQst2bJKm','false','suspended',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -220,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-30 22:19:36
+-- Dump completed on 2016-12-01 16:04:31

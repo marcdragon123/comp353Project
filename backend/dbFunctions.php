@@ -74,7 +74,13 @@
 				return "The username or password are incorrect.";
 		}
 	}
-
+	function getAllRequests(){
+		global $db;
+		$sql = "SELECT * FROM ride_requests";
+		$result = $db->query($sql);   //run query
+		
+		return $result;
+	}
 
 	function postRideDB($price, $startTime, $startLocation,$endLocation, $isPeriodic, $date,$daysOfW,$licenseId,$distance,$maxriders){
 		global $db;

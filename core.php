@@ -91,7 +91,7 @@
             </ul>
           </li>
           <li class="requestButton aqua-bg">
-            <a class="orangeButton text-center" href="#findRide">Request</a>
+            <a class="orangeButton text-center" id="requestButton" href="#findRide">Request</a>
             <ul class="vertical menu blush-bg text-center ">
             <form id="requestForm">
             <li>
@@ -424,6 +424,49 @@
                   </div>
                 </div>
                 </div>
+
+//////////////////////////////////////request listing//////////////////////////
+
+                <div class="listingRequest hide">
+
+                    <ul class="listingsOfItems">
+                    <script type="text/javascript">
+                      
+                      function setRideForm(id){
+                        //alert(id);
+                              document.getElementById('r1').value = id;
+  }
+                    </script>
+                        <?php
+                          $listOfRides = getAllRequests();
+                          date_default_timezone_set('UTC');
+                          while($row = $listOfRides->fetch_assoc()) { 
+                            
+                            if($row['date']>=date ( 'Y-m-d' )) {?>
+                              <li  class="list-item  hvr-underline-from-center" id='<?php echo $row['rideID']; ?>' onclick='setRideForm(this.id);'><img class="list-item-img" src="./style/small_car.png" href="#"  >
+                                 &nbsp &nbsp Departure: &nbsp &nbsp
+                                  <input  name="startLocation" value='<?php echo $row['startLocation']; ?>'  readonly>
+                                 &nbsp &nbsp Destination: &nbsp &nbsp
+                                 <input  name="endLocation" value='<?php echo $row['endLocation']; ?>'  readonly>
+                                 &nbsp &nbsp Date: &nbsp &nbsp
+                                 <input  name="date" value='<?php echo $row['date']; ?>'  readonly>
+                                 &nbsp &nbsp Dep. Time: &nbsp &nbsp<?php echo $row['startTime']; ?>
+                                 <input  name="startTime" value='<?php echo $row['startTime']; ?>'  readonly>
+                                 &nbsp &nbsp Price:  $ &nbsp &nbsp
+                                 <input  name="price" value='<?php echo $row['price']; ?>'  readonly>
+                                 &nbsp &nbsp Periodic: &nbsp &nbsp
+                                 <input  name="isPeriodic" value='<?php echo $row['isPeriodic']; ?>'  readonly>
+                                 <?php //if (getCurrentNumberRiders($row['rideID'])==getMaxNumberRiders($row['rideID'])) 
+                                 //echo 'FULL';?>
+
+                                  </li>
+                          <?php }}  ?>
+                    </ul>
+
+                  </div>
+
+
+
               </div>
       </div>
     </div>
@@ -809,6 +852,22 @@ $("#searchButton").click(function(){
   $(".wrapMapInfo").removeClass("show");
   $(".listingRow").removeClass("hide");
   google.maps.event.trigger(map, 'resize');
+});
+
+$("#requestButton").click(function(){
+  $(".mapCol").removeClass("postClicked");
+  $(".map").removeClass("postClicked");
+  $(".map").removeClass("postClicked");
+  $(".introCol").addClass("hide");
+
+
+  $(".tripInfo").removeClass("postClicked");
+  $(".tripInfo").removeClass("show");
+  $(".postInfo").removeClass("postClicked");
+  $(".wrapMapInfo").removeClass("show");
+  $(".listingRow").addClass("hide");
+
+  $(".listingRequest").addClass("show");
 });
 
 $("#searchSubmit").click(function(){

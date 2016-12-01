@@ -976,3 +976,16 @@ font-family: 'Fredoka One', cursive;
   left: 0;
   right: 0;
 }
+
+
+.listingRequest{
+  width:0%;
+  height:0%;
+  display:none:
+}
+
+.listingRequest.show{
+  width:0%;
+  height:0%;
+  display:none:
+}
