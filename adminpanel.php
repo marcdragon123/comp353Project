@@ -1,5 +1,7 @@
-<?php session_start();
-    include "backend/setup.php";
+<?php //session_start();
+include 'backend/setup.php';
+
+    
  ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">

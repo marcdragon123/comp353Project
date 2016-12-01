@@ -174,6 +174,26 @@
 		$result = $db->query($sql);
 		return $result;
 	}
+	function isAdmin($user){
+		global $db;
+		$sql = "SELECT isAdmin from users where email = '$user'";
+		$result = $db->query($sql);
+		$row = $result->fetch_assoc();
+		if($row['isAdmin'] =='true')
+			return true;
+		else 
+			return false;
+	}
+	function isDriver($user){
+		global $db;
+		$sql= "SELECT * from driver where user_email = '". $user ."'";
+		$result =$db->query($sql);
+	
+		if($result->num_rows==1)
+			return true;
+		else return false;
+
+	}
 	function deleteRide($ride_id){
 		global $db;
 		print_r($db);
