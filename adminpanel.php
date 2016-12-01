@@ -68,7 +68,7 @@
                             </ul>
                     </ul>
                 </td>-->
-                <td><input type="submit" name="" value='Modify'></td>
+                <td><input type="" name="" value='Modify'></td>
                 <td><input type="submit" name="" value ='Erase'></td>
                 </form>
             </tr>
