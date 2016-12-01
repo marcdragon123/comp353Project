@@ -70,7 +70,7 @@ include 'backend/setup.php';
                             </ul>
                     </ul>
                 </td>-->
-                <td><input type="" name="" value='Modify'></td>
+                
                 <td><input type="submit" name="" value ='Erase'></td>
                 </form>
             </tr>
@@ -139,24 +139,13 @@ include 'backend/setup.php';
             <?php
         while($row = $profileInfos->fetch_assoc()) {
     ?>
-            <tr>
-                <td><?php echo $row['user_email']; ?></td>
-                <td>
-                    <ul class="dropdown menu" data-dropdown-menu>
-                        <li>
-                            <a href="#">Modify</a>
-                            <ul class="menu">
-                                <!-- Functionality not done, not sure how this works yet, give me some time -->
-
-
-                                <li><a href="#" data-reveal-id="AdminChangeEmail">Email</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </td>
-                <td><a href="#" class="alert button">DELETE</a></td>
+            <tr><form action ='backend/<?php if($row['status']=='active') echo 'suspendUserController'; else echo 'activeUserController' ;?>.php#display' method ='post'>
+                <td><input  type="text"  name ='user_email' value="<?php echo $row['email']; ?> "  style="text-align:center;" readonly></td>
+                <td>Status:<?php echo $row['status'] ?></td>
+               
+                <td><input class="<?php if ($row['status']=='active') echo 'alert'; ?> button" type="submit" name="" value='<?php if ($row['status']=='active') echo 'Suspend'; else echo 'Activate'; ?>'></td>
                 <!-- And so on-->
+                </form>
             </tr>
             <?php
         }

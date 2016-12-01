@@ -170,7 +170,7 @@
 	}
 	function getAllProfileInfo(){
 		global $db;
-		$sql ="SELECT * from personalinfo";
+		$sql ="SELECT * from users";
 		$result = $db->query($sql);
 		return $result;
 	}
@@ -193,6 +193,25 @@
 			return true;
 		else return false;
 
+	}
+	function activateUser($user){
+		global $db;
+		$sql="UPDATE users set status ='active' where email='$user'";
+		if ($db->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
+	}
+	
+	function suspendUser($user){
+		global $db;
+		$sql="UPDATE users set status ='suspended' where email='$user'";
+		if ($db->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
 	}
 	function deleteRide($ride_id){
 		global $db;
