@@ -47,6 +47,7 @@
 				<li><button type="button" class="button">Search</button></li> -->
 				<li class="radius50 mustard-bg"><a class ="mustard-bg inboxButton" >Inbox</a></li>
 			<li class="radius50 mustard-bg"><a class ="mustard-bg profileButton" >My Profile</a></li>
+                <li class="radius50 mustard-bg"><a class ="mustard-bg profileButton" href='InviteFriend.php'>Invite Friend</a></li>
 			<?php  
 			if(isAdmin($_SESSION['user'])){ ?>
 				<li class="radius50 mustard-bg"> <a href="adminpanel.php" >Admin page</a> </li><?php } ?>
