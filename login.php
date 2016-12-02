@@ -50,7 +50,7 @@
                   </div>   
                 </div>
               <div class='small-6 columns' id='welcomeMessage'>
-                  <p>Lorem Ipsum Motherfuckers</p>
+                  <p>Lorem Ipsum</p>
               </div>
           </div>
           </form>
