@@ -3,7 +3,7 @@ body{
     background: #EDEDED;
     color:#555;
 }
-form{
+#register form{
     padding: 20px 20px 0px 20px;
     border-color: black;
     background: #e6e6e6;

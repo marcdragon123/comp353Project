@@ -93,8 +93,16 @@
                     <div class="small-12 columns"><input type='text' placeholder="Insert email here" name='email'></div>
                </div>
                <div class="row">
-                    <div class="small-12 columns"><input type='text' placeholder="Password" name='password'></div>
+                    <div class="small-12 columns"><input type='text' placeholder="Verify Email" name='verifyEmail'></div>
+               </div>              
+              <formInfo>Password</formInfo>
+               <div class="row">
+                    <div class="small-12 columns"><input type='password' placeholder="Insert password here  " name='password'></div>
                </div>
+               <div class="row">
+                    <div class="small-12 columns"><input type='text' placeholder="Verify Password" name='verifypassword'></div>
+               </div>
+                
               <formInfo>Address</formInfo>
                <div class="row">
                     <div class="small-12 columns"><input type='text' placeholder="Line 1" name='adr1'></div>
