@@ -73,7 +73,7 @@
       }
 ?>
           <h3 style="padding-top:1vh">Registration Form</h3>
-          <h5 style="text-align:center">You sre seconds away from registering to the greatest website ever. Just make sure you have your id handy!</h5>
+          <h5 style="text-align:center">You are seconds away from registering to the greatest website ever. Just make sure you have your id handy!</h5>
            <div class="row">
            <div class="small-4 columns">
            </div>
