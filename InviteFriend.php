@@ -15,10 +15,17 @@
 </head>
 
 <body>
-    <?php include 'header.php';?>
     <h3 id='friendH2'>Life is more fun when you bring your friends!
-        <br/>You can invite your friends by using your code below!
+        <br/>Add your friend's email below and we will generate a unique code for them!
     </h3>
+    
+    <form id='friendEmail'>
+    <div class='row'>  
+        <div class="small-6 small-centered columns">
+    <input type='text' placeholder="Email" name='friendEmail'>
+        </div>
+    </div>
+    </form>
     <div id='center'>
 <!--    Change 'Code' To the user code @Nunezz-->
         <div id='refCodeDiv'>CODE</div>
